@@ -16,18 +16,14 @@ data = pd.read_excel("example_session_data.xlsx")
 # dictionary of counts for analysis
 RESULTS = {"GRY": 0, "HUF": 0, "RAV": 0, "SLY": 0}
 
-# function for multinomial distribution draws
-def multiDraw(pList, res):
-    draw = np.random.multinomial(1, pList)
-    x = np.where(draw == 1)[0][0]
-    if (x == 0):
-        res["GRY"] += 1
-    elif (x == 1):
-        res["HUF"] += 1
-    elif (x == 2):
-        res["RAV"] += 1
-    else:
-        res["SLY"] += 1
+# function for adding the house points for each answer
+def addToResult(pList, res):
+    pList = np.multiply(pList, 100) # to get counts instead of percentages
+    pList = [int(x) for x in pList] 
+    res["GRY"] += pList[0]
+    res["HUF"] += pList[1]
+    res["RAV"] += pList[2]
+    res["SLY"] += pList[3]
 
 # go through the session and analyze the test
 for i in range(0, 9):
@@ -35,7 +31,7 @@ for i in range(0, 9):
     answer = data.iloc[0, i + 3] # +3 because of other cols
     pList = TEST_LOOKUP.iloc[i, answer - 1] # -1 because of 0 indexing
     pList = list(map(float, pList.split(","))) # convert to list of floats
-    multiDraw(pList, RESULTS)
+    addToResult(pList, RESULTS)
 
 
 highest = max(RESULTS.values())
@@ -53,8 +49,6 @@ else:
 
 # save result to data, result column
 data.iloc[0, 2] = HOUSE
-#print(RESULTS)
-#print(HOUSE)
 
 # save data to SQL
 
