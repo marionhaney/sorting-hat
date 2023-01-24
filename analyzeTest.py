@@ -5,7 +5,6 @@
 # import packages
 import numpy as np
 import pandas as pd
-import sqlite3 as sq
 import random
 
 # import test question lookup table

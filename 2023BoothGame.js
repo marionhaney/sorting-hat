@@ -4,82 +4,82 @@
 const questions = [
     {   text: "You and two friends need to cross a bridge guarded by a river troll who insists on fighting one of you before he will let all of you pass. Do you:",
         answers: [
-            { text: 'Volunteer to fight?',                                                               image: "harry.jpg"},
-            { text: 'Attempt to confuse the troll into letting all three of you pass without fighting?', image: "harry.jpg"},
-            { text: 'Suggest that all three of you fight?',                                              image: "harry.jpg"},
-            { text: 'Suggest drawing straws to decide which of you will fight?',                         image: "harry.jpg"}
+            { text: 'Volunteer to fight?',                                                               image: "images/harry.jpg"},
+            { text: 'Attempt to confuse the troll into letting all three of you pass without fighting?', image: "images/harry.jpg"},
+            { text: 'Suggest that all three of you fight?',                                              image: "images/harry.jpg"},
+            { text: 'Suggest drawing straws to decide which of you will fight?',                         image: "images/harry.jpg"}
         ]
     },
     {   text: "Which of the following would you most like to study?",
         answers: [
-            { text: 'Merpeople' , image: "harry.jpg"},
-            { text: 'Centaurs'  , image: "harry.jpg"},
-            { text: 'Werewolves', image: "harry.jpg"},
-            { text: 'Vampires'  , image: "harry.jpg"}
+            { text: 'Merpeople' , image: "images/harry.jpg"},
+            { text: 'Centaurs'  , image: "images/harry.jpg"},
+            { text: 'Werewolves', image: "images/harry.jpg"},
+            { text: 'Vampires'  , image: "images/harry.jpg"}
         ]
     },
     {   text: "How would you like to be known to history?",
         answers: [
             { text: "The Bold" , image: "Bold.png"},
-            { text: "The Good" , image: "Harry.jpg"},
+            { text: "The Good" , image: "images/harry.jpg"},
             { text: "The Wise" , image: "Wise.jpg" },
             { text: "The Great", image: "Great.jpg"}
        ]
     },
     {   text: "What is your favorite CMU tradition?",
         answers: [
-            { text: 'Painting the Fence', image: "harry.jpg"},
-            { text: 'Buggy',              image: "harry.jpg"},
-            { text: 'Booth',              image: "harry.jpg"},
-            { text: 'O-Week',             image: "harry.jpg"}
+            { text: 'Painting the Fence', image: "images/harry.jpg"},
+            { text: 'Buggy',              image: "images/harry.jpg"},
+            { text: 'Booth',              image: "images/harry.jpg"},
+            { text: 'O-Week',             image: "images/harry.jpg"}
         ]
     },
     {   text: "Which of these most accurately describes your relationship with your closest friends?",
         answers: [
-            { text: 'I love surrounding myself with people – the more friends I have, the better!', image: "harry.jpg"},
-            { text: 'I have a few very close friends that I would trust with my life.',             image: "harry.jpg"},
-            { text: 'I tend to be wary around new people, so I do not make new friends often.',     image: "harry.jpg"},
-            { text: 'I find myself becoming friends with people who can help me to succeed.',       image: "harry.jpg"}
+            { text: 'I love surrounding myself with people – the more friends I have, the better!', image: "images/harry.jpg"},
+            { text: 'I have a few very close friends that I would trust with my life.',             image: "images/harry.jpg"},
+            { text: 'I tend to be wary around new people, so I do not make new friends often.',     image: "images/harry.jpg"},
+            { text: 'I find myself becoming friends with people who can help me to succeed.',       image: "images/harry.jpg"}
         ]
     },
     {   text: "The first Quidditch match of the season is approaching, and you can't wait to get involved. What role are you playing?",
         answers: [
-            { text: 'Seeker. I want the glory!',                                     image: "harry.jpg"},
-            { text: 'Chaser. I like to be involved and work as part of the team.',   image: "harry.jpg"},
-            { text: 'Beater. I like having all that power.',                         image: "harry.jpg"},
-            { text: 'I will be in the crowd, making sure supporter morale is high!', image: "harry.jpg"}
+            { text: 'Seeker. I want the glory!',                                     image: "images/harry.jpg"},
+            { text: 'Chaser. I like to be involved and work as part of the team.',   image: "images/harry.jpg"},
+            { text: 'Beater. I like having all that power.',                         image: "images/harry.jpg"},
+            { text: 'I will be in the crowd, making sure supporter morale is high!', image: "images/harry.jpg"}
         ]
     },
     {   text: "Which of your skills are you most proud of?",
         answers: [
-            { text: 'My ability to absorb new information.', image: "harry.jpg"},
-            { text: 'My ability to make new friends.',       image: "harry.jpg"},
-            { text: 'My ability to get what I want.',        image: "harry.jpg"},
-            { text: 'My ability to keep secrets.',           image: "harry.jpg"}
+            { text: 'My ability to absorb new information.', image: "images/harry.jpg"},
+            { text: 'My ability to make new friends.',       image: "images/harry.jpg"},
+            { text: 'My ability to get what I want.',        image: "images/harry.jpg"},
+            { text: 'My ability to keep secrets.',           image: "images/harry.jpg"}
         ]
     },
     {   text: "You have a huge exam to study for, and your common room is too loud. Where do you go?",
         answers: [
-            { text: 'Gates',            image: "harry.jpg"},
-            { text: 'Tepper',           image: "harry.jpg"},
-            { text: 'Sorrells Library', image: "harry.jpg"},
-            { text: 'The UC',           image: "harry.jpg"}
+            { text: 'Gates',            image: "images/harry.jpg"},
+            { text: 'Tepper',           image: "images/harry.jpg"},
+            { text: 'Sorrells Library', image: "images/harry.jpg"},
+            { text: 'The UC',           image: "images/harry.jpg"}
         ]
     },
     {   text: "Which of these magical events would you most like to experience?",
         answers: [
-            { text: 'The Triwizard Tournament', image: "harry.jpg"},
-            { text: 'The Quidditch World Cup',  image: "harry.jpg"},
-            { text: 'The Yule Ball',            image: "harry.jpg"},
-            { text: 'Christmas at Hogwarts',    image: "harry.jpg"}
+            { text: 'The Triwizard Tournament', image: "images/harry.jpg"},
+            { text: 'The Quidditch World Cup',  image: "images/harry.jpg"},
+            { text: 'The Yule Ball',            image: "images/harry.jpg"},
+            { text: 'Christmas at Hogwarts',    image: "images/harry.jpg"}
         ]
     },
     {   text: "Which path do you take?",
         answers: [
-            { text: 'Twisting leafy path through the woods',             image: "harry.jpg"},
-            { text: 'A dark, lantern-lit alley',                         image: "harry.jpg"},
-            { text: 'A wide, sunny, grassy path',                        image: "harry.jpg"},
-            { text: 'A cobblestone street lined with ancient buildings', image: "harry.jpg"}
+            { text: 'Twisting leafy path through the woods',             image: "images/harry.jpg"},
+            { text: 'A dark, lantern-lit alley',                         image: "images/harry.jpg"},
+            { text: 'A wide, sunny, grassy path',                        image: "images/harry.jpg"},
+            { text: 'A cobblestone street lined with ancient buildings', image: "images/harry.jpg"}
         ]    
     }
 ]
