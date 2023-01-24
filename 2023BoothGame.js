@@ -343,11 +343,8 @@ function processAnswer(questionId, answerId){
         populateQuestion(currentQuestion)
     } else {
         //showAnswer();
-        // this is the end of the test
-        const data = [sessionID, userName, result, chosenAnswers[0], 
-        chosenAnswers[1], chosenAnswers[2], chosenAnswers[3],
-        chosenAnswers[4], chosenAnswers[5], chosenAnswers[6], 
-        chosenAnswers[7], chosenAnswers[8], chosenAnswers[9]]
+
+        // this is the end of the test, save the session data
     } 
 }
 
