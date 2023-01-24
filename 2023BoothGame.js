@@ -20,10 +20,10 @@ const questions = [
     },
     {   text: "How would you like to be known to history?",
         answers: [
-            { text: "The Bold" , image: "Bold.png"},
+            { text: "The Bold" , image: "images/harry.jpg"},
             { text: "The Good" , image: "images/harry.jpg"},
-            { text: "The Wise" , image: "Wise.jpg" },
-            { text: "The Great", image: "Great.jpg"}
+            { text: "The Wise" , image: "images/harry.jpg" },
+            { text: "The Great", image: "images/harry.jpg"}
        ]
     },
     {   text: "What is your favorite CMU tradition?",
@@ -85,10 +85,10 @@ const questions = [
 ]
 
 const results = [
-    { house: "Gryffindor", code: "GRY", image: "Gryffindor.png", desc: "Gryffindor house is where you would find the pluckiest and most daring students (there's a reason the house symbol is the brave lion). The house colours are scarlet and gold, the common room lies up in Gryffindor Tower and the Head of House is Professor Minerva McGonagall."},
-    { house: "Hufflepuff", code: "HUF", image: "Hufflepuff.jpg", desc: "Hufflepuff is the most inclusive among the four houses—valuing hard work, dedication, patience, loyalty, and fair play rather than a particular aptitude in its members. The emblematic animal is a badger, and yellow and black are its colours."},
-    { house: "Ravenclaw" , code: "RAV", image: "Ravenclaw.jpg" , desc: "Ravenclaws possess the traits of cleverness, wisdom, wit, intellectual ability and creativity. According to Slytherin prefect Gemma Farley, Ravenclaws are so competitive when it comes to academic success that they are known to back stab each other, and likely other students, in order to get top marks."},
-    { house: "Slytherin" , code: "SLY", image: "Slytherin.jpg" , desc: "Each house has a set of traits and characteristics associated with it, and those in Slytherin are known for being ambitious, cunning, and resourceful. Slytherins are also sometimes regarded as being evil thanks to the fact that many of the most sinister witches and wizards have been associated with this house."}
+    { house: "Gryffindor", code: "GRY", image: "images/harry.png", desc: "Gryffindor house is where you would find the pluckiest and most daring students (there's a reason the house symbol is the brave lion). The house colours are scarlet and gold, the common room lies up in Gryffindor Tower and the Head of House is Professor Minerva McGonagall."},
+    { house: "Hufflepuff", code: "HUF", image: "images/harry.jpg", desc: "Hufflepuff is the most inclusive among the four houses—valuing hard work, dedication, patience, loyalty, and fair play rather than a particular aptitude in its members. The emblematic animal is a badger, and yellow and black are its colours."},
+    { house: "Ravenclaw" , code: "RAV", image: "images/harry.jpg" , desc: "Ravenclaws possess the traits of cleverness, wisdom, wit, intellectual ability and creativity. According to Slytherin prefect Gemma Farley, Ravenclaws are so competitive when it comes to academic success that they are known to back stab each other, and likely other students, in order to get top marks."},
+    { house: "Slytherin" , code: "SLY", image: "images/harry.jpg" , desc: "Each house has a set of traits and characteristics associated with it, and those in Slytherin are known for being ambitious, cunning, and resourceful. Slytherins are also sometimes regarded as being evil thanks to the fact that many of the most sinister witches and wizards have been associated with this house."}
 ]
 
 const keyCodes     = ['49', '50', '51', '52']
@@ -342,7 +342,12 @@ function processAnswer(questionId, answerId){
     if (currentQuestion < numQuestions) {
         populateQuestion(currentQuestion)
     } else {
-        showAnswer()
+        //showAnswer();
+        // this is the end of the test
+        const data = [sessionID, userName, result, chosenAnswers[0], 
+        chosenAnswers[1], chosenAnswers[2], chosenAnswers[3],
+        chosenAnswers[4], chosenAnswers[5], chosenAnswers[6], 
+        chosenAnswers[7], chosenAnswers[8], chosenAnswers[9]]
     } 
 }
 

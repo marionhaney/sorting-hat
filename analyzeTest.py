@@ -5,12 +5,11 @@
 # import packages
 import numpy as np
 import pandas as pd
-import random
 
 # import test question lookup table
-TEST_LOOKUP = pd.read_excel("QA_Lookup_Table.xlsx", header = None)
+TEST_LOOKUP = pd.read_excel("QALookupTable.xlsx", header = None)
 
-# example data -- change to sqlite row
+# example data -- change to reading in data
 data = pd.read_excel("example_session_data.xlsx")
 
 # dictionary of counts for analysis
@@ -49,8 +48,6 @@ else:
 
 # save result to data, result column
 data.iloc[0, 2] = HOUSE
-
-# save data to SQL
 
 # save data to overall sessions
 
