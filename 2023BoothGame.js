@@ -343,7 +343,6 @@ function processAnswer(questionId, answerId){
         populateQuestion(currentQuestion)
     } else {
         //showAnswer();
-
         // this is the end of the test, save the session data
     } 
 }
