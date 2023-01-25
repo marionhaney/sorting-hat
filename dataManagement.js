@@ -28,7 +28,20 @@ class SessionData {
         this.RAV = 0;
         this.SLY = 0;
     }
-  }
+}
+
+// class to store all sessions, each session is appended to the list
+class AllSessionData {
+    constructor() {
+        this.sessions = [];
+        this.GRYRoster = []; // list of names in each house
+        this.HUFRoster = [];
+        this.RAVRoster = [];
+        this.SLYRoster = [];
+    }
+}
+
+allSessions = new AllSessionData();
 
 
 // function for analyzing the results, takes in a SessionData object and the array of chosen answers
@@ -45,6 +58,19 @@ function analyzeSession(S, chosenAnswers) {
     let houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
     let whichMax = endSums.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
     S.house = houses[whichMax];
+
+    // add session to all session data
+    allSessions.sessions.append(S);
+    if (S.house == "Gryffindor") {
+        allSessions.GRYRoster.append(S.name);
+    } else if (S.house == "Hufflepuff") {
+        allSessions.HUFRoster.append(S.name);
+    } else if (S.house == "Ravenclaw") {
+        allSessions.RAVRoster.append(S.name);
+    } else { // Slytherin
+        allSessions.SLYRoster.append(S.name);
+    }
+
     console.log("You are " + S.house + " !");
 }
 
