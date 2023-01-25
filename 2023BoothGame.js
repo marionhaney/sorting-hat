@@ -357,6 +357,7 @@ function processAnswer(questionId, answerId) {
         console.log("Sorting you into your house... \n");
         var S = new SessionData(sessionID, userName);
         analyzeSession(S, chosenAnswers);
+        console.log(S);
     }
 }
 

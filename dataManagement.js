@@ -22,7 +22,11 @@ class SessionData {
     constructor(sessionID, name) {
         this.sessionID = sessionID;
         this.name = name;
-        this.result = {house:"", GRY: 0, HUF: 0, RAV: 0, SLY:0};
+        this.house ="";
+        this.GRY = 0;
+        this.HUF = 0;
+        this.RAV = 0;
+        this.SLY = 0;
     }
   }
 
@@ -32,15 +36,15 @@ function analyzeSession(S, chosenAnswers) {
     for (let i = 0; i <= 9; i++) {
         answer = chosenAnswers[i];
         vals = QALookup[i, answer];
-        this.result.GRY += vals[0];
-        this.result.HUF += vals[1];
-        this.result.RAV += vals[2];
-        this.result.SLY += vals[3];
+        S.GRY += parseInt(vals[0]);
+        S.HUF += parseInt(vals[1]);
+        S.RAV += parseInt(vals[2]);
+        S.SLY += parseInt(vals[3]);
     }
-    let endSums = [this.result.GRY, this.result.HUF, this.result.RAV, this.result.SLY];
+    let endSums = [S.GRY, S.HUF, S.RAV, S.SLY];
     let houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
     let whichMax = endSums.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
-    this.house = houses[whichMax];
-    console.log("You are " + this.house + " !");
+    S.house = houses[whichMax];
+    console.log("You are " + S.house + " !");
 }
 
