@@ -1,4 +1,4 @@
-// Data Management: JS object and functions for data storage and management
+// Data Management: JS objects and functions for data storage and management
 // all globals and helper functions
 // Marion Haney, Spring 2023 Harry Potter Booth Game
 
@@ -60,17 +60,15 @@ function analyzeSession(S, chosenAnswers) {
     S.house = houses[whichMax];
 
     // add session to all session data
-    allSessions.sessions.append(S);
+    allSessions.sessions.push(S);
     if (S.house == "Gryffindor") {
-        allSessions.GRYRoster.append(S.name);
+        allSessions.GRYRoster.push(S.name);
     } else if (S.house == "Hufflepuff") {
-        allSessions.HUFRoster.append(S.name);
+        allSessions.HUFRoster.push(S.name);
     } else if (S.house == "Ravenclaw") {
-        allSessions.RAVRoster.append(S.name);
+        allSessions.RAVRoster.push(S.name);
     } else { // Slytherin
-        allSessions.SLYRoster.append(S.name);
+        allSessions.SLYRoster.push(S.name);
     }
-
-    console.log("You are " + S.house + " !");
 }
 

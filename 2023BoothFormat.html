@@ -12,21 +12,31 @@
 
     <body>
 
-    <!-- Read instructions, enter your name -->
-    <section>
-        <div id="titles" align="right"></div>
-        <div id="form" class="hide" align="center">
-            <label for="name_entry">Please enter your name (must be > 1 character):</label>
-            <input id="name_entry" type="text"><br>
-        </div>
-        <div id="questions"></div>
-        <div id="answer"></div>
-    </section>
+        <!-- Source scripts for viewing results -->
+        <section>
+            <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-core.min.js"></script>
+            <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-pie.min.js"></script>
+            <script src="viewResults.js"></script>
+
+        </section>
+
+        <!-- Read instructions, enter your name -->
+        <section>
+            <div id="titles" align="right"></div>
+            <div id="form" class="hide" align="center">
+                <label for="name_entry">Please enter your name (must be > 1 character):</label>
+                <input id="name_entry" type="text"><br>
+            </div>
+            <div id="questions"></div>
+            <div id="answer"></div>
+        </section>
+        
+        <!-- Play the game -->
+        <section>
+        <script src="dataManagement.js"></script>
+        <script src="2023BoothGame.js"></script>
+        <div id="container" style="width: 100%; height: 100%"></div>
+        </section>
     
-    <!-- Play the game -->
-    <script src="dataManagement.js"></script>
-    <script src="2023BoothGame.js"></script>
-
-
     </body>
 </html>

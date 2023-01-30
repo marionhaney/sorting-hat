@@ -139,7 +139,7 @@ document.addEventListener("keyup", handleKeyEvent)
 idleScreen.classList.add('idle')
 idleScreen.classList.add('hide')
 questionDisplay.append(idleScreen)
-window.setInterval(checkIdleTime, 60000)
+window.setInterval(checkIdleTime, 900000)
 window.setInterval(incIdleTime, 1000)
 
 function showStart() {
@@ -358,6 +358,7 @@ function processAnswer(questionId, answerId) {
         var S = new SessionData(sessionID, userName);
         analyzeSession(S, chosenAnswers);
         console.log(S);
+        showPieChart(S);
     }
 }
 
