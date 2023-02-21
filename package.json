@@ -1,0 +1,23 @@
+{
+  "name": "booth-package",
+  "version": "1.0.0",
+  "description": "package for sorting hat personality test code",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marionhaney/sorting-hat.git"
+  },
+  "author": "Marion Haney, Maddie Hagar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marionhaney/sorting-hat/issues"
+  },
+  "homepage": "https://github.com/marionhaney/sorting-hat#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
