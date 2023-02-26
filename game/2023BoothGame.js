@@ -5,100 +5,100 @@ const questions = [
     {
         text: "You and two friends need to cross a bridge guarded by a river troll who insists on fighting one of you before he will let all of you pass. Do you:",
         answers: [
-            { text: 'Volunteer to fight?', image: "images/harry.jpg" },
-            { text: 'Attempt to confuse the troll into letting all three of you pass without fighting?', image: "images/harry.jpg" },
-            { text: 'Suggest that all three of you fight?', image: "images/harry.jpg" },
-            { text: 'Suggest drawing straws to decide which of you will fight?', image: "images/harry.jpg" }
+            { text: 'Volunteer to fight?', image: "graphics/volunteer.jpg" },
+            { text: 'Attempt to confuse the troll into letting all three of you pass without fighting?', image: "graphics/confuse.jpg" },
+            { text: 'Suggest that all three of you fight?', image: "graphics/allFight.jpg" },
+            { text: 'Suggest drawing straws to decide which of you will fight?', image: "graphics/drawStraws.jpg" }
         ]
     },
     {
         text: "Which of the following would you most like to study?",
         answers: [
-            { text: 'Merpeople', image: "images/harry.jpg" },
-            { text: 'Centaurs', image: "images/harry.jpg" },
-            { text: 'Werewolves', image: "images/harry.jpg" },
-            { text: 'Vampires', image: "images/harry.jpg" }
+            { text: 'Merpeople', image: "graphics/merpeople.jpg" },
+            { text: 'Centaurs', image: "graphics/centaurs.jpg" },
+            { text: 'Werewolves', image: "graphics/werewolves.jpg" },
+            { text: 'Vampires', image: "graphics/vampires.jpg" }
         ]
     },
     {
         text: "How would you like to be known to history?",
         answers: [
-            { text: "The Bold", image: "images/harry.jpg" },
-            { text: "The Good", image: "images/harry.jpg" },
-            { text: "The Wise", image: "images/harry.jpg" },
-            { text: "The Great", image: "images/harry.jpg" }
+            { text: "The Bold", image: "graphics/bold.jpg" },
+            { text: "The Good", image: "graphics/good.jpg" },
+            { text: "The Wise", image: "graphics/wise.jpg" },
+            { text: "The Great", image: "graphics/great.jpg" }
         ]
     },
     {
         text: "What is your favorite CMU tradition?",
         answers: [
-            { text: 'Painting the Fence', image: "images/harry.jpg" },
-            { text: 'Buggy', image: "images/harry.jpg" },
-            { text: 'Booth', image: "images/harry.jpg" },
-            { text: 'O-Week', image: "images/harry.jpg" }
+            { text: 'Painting the Fence', image: "graphics/fence.jpg" },
+            { text: 'Buggy', image: "graphics/buggy.jpg" },
+            { text: 'Booth', image: "graphics/booth.jpg" },
+            { text: 'O-Week', image: "graphics/oweek.jpg" }
         ]
     },
     {
         text: "Which of these most accurately describes your relationship with your closest friends?",
         answers: [
-            { text: 'I love surrounding myself with people – the more friends I have, the better!', image: "images/harry.jpg" },
-            { text: 'I have a few very close friends that I would trust with my life.', image: "images/harry.jpg" },
-            { text: 'I tend to be wary around new people, so I do not make new friends often.', image: "images/harry.jpg" },
-            { text: 'I find myself becoming friends with people who can help me to succeed.', image: "images/harry.jpg" }
+            { text: 'I love surrounding myself with people – the more friends I have, the better!', image: "graphics/manyFriends.jpg" },
+            { text: 'I have a few very close friends that I would trust with my life.', image: "graphics/closeFriends.jpg" },
+            { text: 'I tend to be wary around new people, so I do not make new friends often.', image: "graphics/noFriends.jpg" },
+            { text: 'I find myself becoming friends with people who can help me to succeed.', image: "graphics/succFriends.jpg" }
         ]
     },
     {
         text: "The first Quidditch match of the season is approaching, and you can't wait to get involved. What role are you playing?",
         answers: [
-            { text: 'Seeker. I want the glory!', image: "images/harry.jpg" },
-            { text: 'Chaser. I like to be involved and work as part of the team.', image: "images/harry.jpg" },
-            { text: 'Beater. I like having all that power.', image: "images/harry.jpg" },
-            { text: 'I will be in the crowd, making sure supporter morale is high!', image: "images/harry.jpg" }
+            { text: 'Seeker. I want the glory!', image: "graphics/seeker.jpg" },
+            { text: 'Chaser. I like to be involved and work as part of the team.', image: "graphics/chaser.jpg" },
+            { text: 'Beater. I like having all that power.', image: "graphics/beater.jpg" },
+            { text: 'I will be in the crowd, making sure supporter morale is high!', image: "graphics/supporter.jpg" }
         ]
     },
     {
         text: "Which of your skills are you most proud of?",
         answers: [
-            { text: 'My ability to absorb new information.', image: "images/harry.jpg" },
-            { text: 'My ability to make new friends.', image: "images/harry.jpg" },
-            { text: 'My ability to get what I want.', image: "images/harry.jpg" },
-            { text: 'My ability to keep secrets.', image: "images/harry.jpg" }
+            { text: 'My ability to absorb new information.', image: "graphics/absorbInfo.jpg" },
+            { text: 'My ability to make new friends.', image: "graphics/makeFriends.jpg" },
+            { text: 'My ability to get what I want.', image: "graphics/getWant.jpg" },
+            { text: 'My ability to keep secrets.', image: "graphics/keepSecrets.jpg" }
         ]
     },
     {
         text: "You have a huge exam to study for, and your common room is too loud. Where do you go?",
         answers: [
-            { text: 'Gates', image: "images/harry.jpg" },
-            { text: 'Tepper', image: "images/harry.jpg" },
-            { text: 'Sorrells Library', image: "images/harry.jpg" },
-            { text: 'The UC', image: "images/harry.jpg" }
+            { text: 'Gates', image: "graphics/gates.jpg" },
+            { text: 'Tepper', image: "graphics/tepper.jpg" },
+            { text: 'Sorrells Library', image: "graphics/sorrells.jpg" },
+            { text: 'The UC', image: "graphics/uc.jpg" }
         ]
     },
     {
         text: "Which of these magical events would you most like to experience?",
         answers: [
-            { text: 'The Triwizard Tournament', image: "images/harry.jpg" },
-            { text: 'The Quidditch World Cup', image: "images/harry.jpg" },
-            { text: 'The Yule Ball', image: "images/harry.jpg" },
-            { text: 'Christmas at Hogwarts', image: "images/harry.jpg" }
+            { text: 'The Triwizard Tournament', image: "graphics/triwizard.jpg" },
+            { text: 'The Quidditch World Cup', image: "graphics/worldCup.jpg" },
+            { text: 'The Yule Ball', image: "graphics/yuleBall.jpg" },
+            { text: 'Christmas at Hogwarts', image: "graphics/christmas.jpg" }
         ]
     },
     {
         text: "Which path do you take?",
         answers: [
-            { text: 'Twisting leafy path through the woods', image: "images/harry.jpg" },
-            { text: 'A dark, lantern-lit alley', image: "images/harry.jpg" },
-            { text: 'A wide, sunny, grassy path', image: "images/harry.jpg" },
-            { text: 'A cobblestone street lined with ancient buildings', image: "images/harry.jpg" }
+            { text: 'Twisting leafy path through the woods', image: "graphics/woods.jpg" },
+            { text: 'A dark, lantern-lit alley', image: "graphics/alley.jpg" },
+            { text: 'A wide, sunny, grassy path', image: "graphics/grassy.jpg" },
+            { text: 'A cobblestone street lined with ancient buildings', image: "graphics/street.jpg" }
         ]
     }
 ]
 
 const results = [
-    { house: "Gryffindor", code: "GRY", image: "images/harry.png", desc: "Gryffindor house is where you would find the pluckiest and most daring students (there's a reason the house symbol is the brave lion). The house colours are scarlet and gold, the common room lies up in Gryffindor Tower and the Head of House is Professor Minerva McGonagall." },
-    { house: "Hufflepuff", code: "HUF", image: "images/harry.jpg", desc: "Hufflepuff is the most inclusive among the four houses—valuing hard work, dedication, patience, loyalty, and fair play rather than a particular aptitude in its members. The emblematic animal is a badger, and yellow and black are its colours." },
-    { house: "Ravenclaw", code: "RAV", image: "images/harry.jpg", desc: "Ravenclaws possess the traits of cleverness, wisdom, wit, intellectual ability and creativity. According to Slytherin prefect Gemma Farley, Ravenclaws are so competitive when it comes to academic success that they are known to back stab each other, and likely other students, in order to get top marks." },
-    { house: "Slytherin", code: "SLY", image: "images/harry.jpg", desc: "Each house has a set of traits and characteristics associated with it, and those in Slytherin are known for being ambitious, cunning, and resourceful. Slytherins are also sometimes regarded as being evil thanks to the fact that many of the most sinister witches and wizards have been associated with this house." }
+    { house: "Gryffindor", code: "GRY", image: "images/gryff.png", desc: "Gryffindor house is where you would find the pluckiest and most daring students (there's a reason the house symbol is the brave lion). The house colours are scarlet and gold, the common room lies up in Gryffindor Tower and the Head of House is Professor Minerva McGonagall." },
+    { house: "Hufflepuff", code: "HUF", image: "images/huff.jpg", desc: "Hufflepuff is the most inclusive among the four houses—valuing hard work, dedication, patience, loyalty, and fair play rather than a particular aptitude in its members. The emblematic animal is a badger, and yellow and black are its colours." },
+    { house: "Ravenclaw", code: "RAV", image: "images/raven.jpg", desc: "Ravenclaws possess the traits of cleverness, wisdom, wit, intellectual ability and creativity. According to Slytherin prefect Gemma Farley, Ravenclaws are so competitive when it comes to academic success that they are known to back stab each other, and likely other students, in order to get top marks." },
+    { house: "Slytherin", code: "SLY", image: "images/slyth.jpg", desc: "Each house has a set of traits and characteristics associated with it, and those in Slytherin are known for being ambitious, cunning, and resourceful. Slytherins are also sometimes regarded as being evil thanks to the fact that many of the most sinister witches and wizards have been associated with this house." }
 ]
 
 const keyCodes = ['49', '50', '51', '52']
