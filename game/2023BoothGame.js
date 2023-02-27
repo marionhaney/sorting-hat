@@ -15,9 +15,9 @@ const questions = [
         text: "Which of the following would you most like to study?",
         answers: [
             { text: 'Merpeople', image: "graphics/merpeople.jpg" },
-            { text: 'Centaurs', image: "graphics/centaurs.jpg" },
-            { text: 'Werewolves', image: "graphics/werewolves.jpg" },
-            { text: 'Vampires', image: "graphics/vampires.jpg" }
+            { text: 'Centaurs', image: "graphics/centaur.jpg" },
+            { text: 'Werewolves', image: "graphics/werewolf.jpg" },
+            { text: 'Vampires', image: "graphics/vampire.jpg" }
         ]
     },
     {
@@ -41,10 +41,10 @@ const questions = [
     {
         text: "Which of these most accurately describes your relationship with your closest friends?",
         answers: [
-            { text: 'I love surrounding myself with people – the more friends I have, the better!', image: "graphics/manyFriends.jpg" },
-            { text: 'I have a few very close friends that I would trust with my life.', image: "graphics/closeFriends.jpg" },
-            { text: 'I tend to be wary around new people, so I do not make new friends often.', image: "graphics/noFriends.jpg" },
-            { text: 'I find myself becoming friends with people who can help me to succeed.', image: "graphics/succFriends.jpg" }
+            { text: 'I love surrounding myself with people – the more friends I have, the better!', image: "graphics/surrounded.jpg" },
+            { text: 'I have a few very close friends that I would trust with my life.', image: "graphics/few.jpg" },
+            { text: 'I tend to be wary around new people, so I do not make new friends often.', image: "graphics/wary.jpg" },
+            { text: 'I find myself becoming friends with people who can help me to succeed.', image: "graphics/succeed.jpg" }
         ]
     },
     {
@@ -53,7 +53,7 @@ const questions = [
             { text: 'Seeker. I want the glory!', image: "graphics/seeker.jpg" },
             { text: 'Chaser. I like to be involved and work as part of the team.', image: "graphics/chaser.jpg" },
             { text: 'Beater. I like having all that power.', image: "graphics/beater.jpg" },
-            { text: 'I will be in the crowd, making sure supporter morale is high!', image: "graphics/supporter.jpg" }
+            { text: 'I will be in the crowd, making sure supporter morale is high!', image: "graphics/crowd.jpg" }
         ]
     },
     {
@@ -62,7 +62,7 @@ const questions = [
             { text: 'My ability to absorb new information.', image: "graphics/absorbInfo.jpg" },
             { text: 'My ability to make new friends.', image: "graphics/makeFriends.jpg" },
             { text: 'My ability to get what I want.', image: "graphics/getWant.jpg" },
-            { text: 'My ability to keep secrets.', image: "graphics/keepSecrets.jpg" }
+            { text: 'My ability to keep secrets.', image: "graphics/secrets.jpg" }
         ]
     },
     {
@@ -86,7 +86,7 @@ const questions = [
     {
         text: "Which path do you take?",
         answers: [
-            { text: 'Twisting leafy path through the woods', image: "graphics/woods.jpg" },
+            { text: 'Twisting leafy path through the woods', image: "graphics/forest.jpg" },
             { text: 'A dark, lantern-lit alley', image: "graphics/alley.jpg" },
             { text: 'A wide, sunny, grassy path', image: "graphics/grassy.jpg" },
             { text: 'A cobblestone street lined with ancient buildings', image: "graphics/street.jpg" }
