@@ -92,113 +92,114 @@ const questions = [
             { text: 'A cobblestone street lined with ancient buildings', image: "graphics/street.jpg" }
         ]
     }
-]
+];
 
 const results = [
     { house: "Gryffindor", code: "GRY", image: "images/gryff.png", desc: "Gryffindor house is where you would find the pluckiest and most daring students (there's a reason the house symbol is the brave lion). The house colours are scarlet and gold, the common room lies up in Gryffindor Tower and the Head of House is Professor Minerva McGonagall." },
     { house: "Hufflepuff", code: "HUF", image: "images/huff.jpg", desc: "Hufflepuff is the most inclusive among the four houses—valuing hard work, dedication, patience, loyalty, and fair play rather than a particular aptitude in its members. The emblematic animal is a badger, and yellow and black are its colours." },
     { house: "Ravenclaw", code: "RAV", image: "images/raven.jpg", desc: "Ravenclaws possess the traits of cleverness, wisdom, wit, intellectual ability and creativity. According to Slytherin prefect Gemma Farley, Ravenclaws are so competitive when it comes to academic success that they are known to back stab each other, and likely other students, in order to get top marks." },
     { house: "Slytherin", code: "SLY", image: "images/slyth.jpg", desc: "Each house has a set of traits and characteristics associated with it, and those in Slytherin are known for being ambitious, cunning, and resourceful. Slytherins are also sometimes regarded as being evil thanks to the fact that many of the most sinister witches and wizards have been associated with this house." }
-]
+];
 
-const keyCodes = ['49', '50', '51', '52']
-const numHouses = 4
-const numQuestions = 10
-const maxIdleTime = 59
-const minIdLength = 2
-const enter = '13'
-const space = '32'
-const restart = '48'
-const countString = "/".concat(numQuestions.toString())
+const keyCodes = ['49', '50', '51', '52'];
+const numHouses = 4;
+const numQuestions = 10;
+const maxIdleTime = 59;
+const minIdLength = 2;
+const enter = '13';
+const space = '32';
+const restart = '48';
+const countString = "/".concat(numQuestions.toString());
 
-var sessionID = ""
-var userName = ""
-var result = ""
-var started = false
-var finished = false
-var idle = false
-var idleTime = 0
-var currentQuestion = 0
-var chosenAnswers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-var question = questions[currentQuestion]
-var questionBlock = document.createElement('div')
-var questionHeading = document.createElement('h2')
-var answersBlock = document.createElement('div')
-var counter = document.createElement('div')
-var session = document.createElement('div')
-var startScreen = document.createElement('div')
-var idleScreen = document.createElement('div')
-var reset = document.createElement('top-caption')
+var sessionID = "";
+var userName = "";
+var result = "";
+var started = false;
+var finished = false;
+var idle = false;
+var idleTime = 0;
+var currentQuestion = 0;
+var chosenAnswers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var question = questions[currentQuestion];
+var questionBlock = document.createElement('div');
+var questionHeading = document.createElement('h2');
+var answersBlock = document.createElement('div');
+var counter = document.createElement('div');
+var session = document.createElement('div');
+var startScreen = document.createElement('div');
+var idleScreen = document.createElement('div');
+var reset = document.createElement('top-caption');
 var images = document.getElementsByTagName("img");
-var titleDisplay = document.querySelector('#titles')
-var questionDisplay = document.querySelector('#questions')
-var answerDisplay = document.querySelector('#answer')
-var formDisplay = document.querySelector('#form')
+var titleDisplay = document.querySelector('#titles');
+var questionDisplay = document.querySelector('#questions');
+var answerDisplay = document.querySelector('#answer');
+var formDisplay = document.querySelector('#form');
+var S = {};
 
-document.addEventListener("keyup", handleKeyEvent)
-idleScreen.classList.add('idle')
-idleScreen.classList.add('hide')
-questionDisplay.append(idleScreen)
-window.setInterval(checkIdleTime, 900000)
-window.setInterval(incIdleTime, 1000)
+document.addEventListener("keyup", handleKeyEvent);
+idleScreen.classList.add('idle');
+idleScreen.classList.add('hide');
+questionDisplay.append(idleScreen);
+window.setInterval(checkIdleTime, 900000);
+window.setInterval(incIdleTime, 1000);
 
 function showStart() {
-    startScreen.classList.add('start-block')
-    startScreen.textContent = "Welcome to Kappa Alpha Theta's Spring 2023 booth! \nAre you excited to get sorted into your Hogwarts House? \nYou will be asked a series of questions with color coded answers. \nPress the button of the matching color to select your answer! \nPut on the hat and press enter to start. Have fun!"
-    questionDisplay.append(startScreen)
-}
+    startScreen.classList.add('start-block');
+    startScreen.textContent = "Welcome to Kappa Alpha Theta's Spring 2023 booth! \nAre you excited to get sorted into your Hogwarts House? \nYou will be asked a series of questions with color coded answers. \nPress the button of the matching color to select your answer! \nPut on the hat and press enter to start. Have fun!";
+    questionDisplay.append(startScreen);
+};
 
 function incIdleTime() {
-    idleTime++
+    idleTime++;
     if (idle) {
         showIdleScreen()
-    }
-}
+    };
+};
 
 function checkIdleTime() {
     if (idleTime >= maxIdleTime && !finished) {
-        showIdleScreen()
-    }
-}
+        showIdleScreen();
+    };
+};
 
 function resetGlobals() {
-    sessionID = ""
-    userName = ""
-    result = ""
-    started = false
-    finished = false
-    idle = false
-    idleTime = 0
-    currentQuestion = 0
-    chosenAnswers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    question = questions[currentQuestion]
-    document.getElementById('name_entry').value = ''
-}
+    sessionID = "";
+    userName = "";
+    result = "";
+    started = false;
+    finished = false;
+    idle = false;
+    idleTime = 0;
+    currentQuestion = 0;
+    chosenAnswers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    question = questions[currentQuestion];
+    document.getElementById('name_entry').value = '';
+};
 
 function resetQuiz() {
-    resetQuestion()
-    resetGlobals()
-    showStart()
-}
+    resetQuestion();
+    resetGlobals();
+    showStart();
+};
 
 function hideQuizScreen() {
     for (var i = 0; i < questionBlock.children.length; i++) {
-        var child = questionBlock.children[i]
-        child.classList.add('hide')
-    }
+        var child = questionBlock.children[i];
+        child.classList.add('hide');
+    };
     for (var i = 0; i < questionHeading.children.length; i++) {
-        var child = questionHeading.children[i]
-        child.classList.add('hide')
-    }
+        var child = questionHeading.children[i];
+        child.classList.add('hide');
+    };
     for (var i = 0; i < answersBlock.children.length; i++) {
-        var child = answersBlock.children[i]
-        child.classList.add('hide')
-    }
+        var child = answersBlock.children[i];
+        child.classList.add('hide');
+    };
     for (var i = 0; i < questionDisplay.children.length; i++) {
-        var child = questionDisplay.children[i]
-        child.classList.add('hide')
-    }
-}
+        var child = questionDisplay.children[i];
+        child.classList.add('hide');
+    };
+};
 
 function restoreQuizScreen() {
     for (var i = 0; i < questionBlock.children.length; i++) {
@@ -221,145 +222,145 @@ function restoreQuizScreen() {
 }
 
 function showIdleScreen() {
-    idle = true
-    hideQuizScreen()
-    const time = idleTime.toString()
-    const idleTxt = "You've been idle for " + time + "s. Press space to resume."
-    idleScreen.textContent = idleTxt
-    idleScreen.classList.remove('hide')
-}
+    idle = true;
+    hideQuizScreen();
+    const time = idleTime.toString();
+    const idleTxt = "You've been idle for " + time + "s. Press space to resume.";
+    idleScreen.textContent = idleTxt;
+    idleScreen.classList.remove('hide');
+};
 
 function hideIdleScreen() {
-    restoreQuizScreen()
-    idleScreen.classList.add('hide')
+    restoreQuizScreen();
+    idleScreen.classList.add('hide');
 }
 
 function resetQuestion() {
     while (questionBlock.firstChild) {
-        questionBlock.removeChild(questionBlock.firstChild)
-    }
+        questionBlock.removeChild(questionBlock.firstChild);
+    };
     while (questionHeading.firstChild) {
-        questionHeading.removeChild(questionHeading.firstChild)
-    }
+        questionHeading.removeChild(questionHeading.firstChild);
+    };
     while (answersBlock.firstChild) {
-        answersBlock.removeChild(answersBlock.firstChild)
-    }
+        answersBlock.removeChild(answersBlock.firstChild);
+    };
     while (questionDisplay.firstChild) {
-        questionDisplay.removeChild(questionDisplay.firstChild)
-    }
+        questionDisplay.removeChild(questionDisplay.firstChild);
+    };
     while (answerDisplay.firstChild) {
-        answerDisplay.removeChild(answerDisplay.firstChild)
-    }
+        answerDisplay.removeChild(answerDisplay.firstChild);
+    };
     while (titleDisplay.firstChild) {
-        titleDisplay.removeChild(titleDisplay.firstChild)
-    }
-    formDisplay.classList.add('hide')
-}
+        titleDisplay.removeChild(titleDisplay.firstChild);
+    };
+    formDisplay.classList.add('hide');
+};
 
 function populateQuestion(index) {
-    titleDisplay.append(reset)
-    questionDisplay.append(session)
-    question = questions[index]
-    questionBlock.id = currentQuestion
-    questionBlock.classList.add('question-block')
+    titleDisplay.append(reset);
+    questionDisplay.append(session);
+    question = questions[index];
+    questionBlock.id = currentQuestion;
+    questionBlock.classList.add('question-block');
 
-    counter.textContent = (currentQuestion + 1).toString().concat(countString)
-    counter.classList.add('counter')
-    questionDisplay.append(counter)
+    counter.textContent = (currentQuestion + 1).toString().concat(countString);
+    counter.classList.add('counter');
+    questionDisplay.append(counter);
 
-    questionHeading.textContent = question.text
-    questionBlock.append(questionHeading)
-    questionDisplay.append(questionBlock)
+    questionHeading.textContent = question.text;
+    questionBlock.append(questionHeading);
+    questionDisplay.append(questionBlock);
 
-    answersBlock.id = currentQuestion + "-questions"
-    answersBlock.classList.add('answer-options')
+    answersBlock.id = currentQuestion + "-questions";
+    answersBlock.classList.add('answer-options');
 
     for (var i = 0; i < numHouses; i++) {
-        const answer = question.answers[i]
-        const answerBlock = document.createElement('div')
-        answerBlock.classList.add('answer-block')
+        const answer = question.answers[i];
+        const answerBlock = document.createElement('div');
+        answerBlock.classList.add('answer-block');
 
-        const answerImage = document.createElement('img')
-        answerImage.setAttribute('src', answer.image)
+        const answerImage = document.createElement('img');
+        answerImage.setAttribute('src', answer.image);
 
-        const answerTitle = document.createElement('h3')
-        answerTitle.textContent = answer.text
+        const answerTitle = document.createElement('h3');
+        answerTitle.textContent = answer.text;
 
-        answerBlock.append(answerImage, answerTitle)
-        answersBlock.append(answerBlock)
-    }
-    questionDisplay.append(answersBlock)
+        answerBlock.append(answerImage, answerTitle);
+        answersBlock.append(answerBlock);
+    };
+    questionDisplay.append(answersBlock);
 }
 
 function handleKeyEvent(evt) {
-    idleTime = 0
+    idleTime = 0;
     if (idle && evt.keyCode == space) {
-        idle = false
-        hideIdleScreen()
+        idle = false;
+        hideIdleScreen();
     } else if (evt.keyCode == restart) {
-        resetQuiz()
+        resetQuiz();
     } else if (started) {
-        showNextQuestion(evt)
+        showNextQuestion(evt);
     } else if (evt.keyCode == enter) {
-        startQuiz()
+        startQuiz();
     }
 }
 
 function startQuiz() {
-    started = true
-    resetQuestion()
-    showNameEntry()
+    started = true;
+    resetQuestion();
+    showNameEntry();
 }
 
 function showNextQuestion(evt) {
     for (var i = 0; i < numHouses; i++) {
         if (evt.keyCode == keyCodes[i]) {
-            const qId = currentQuestion
-            const ansId = i + 1
-            processAnswer(qId, ansId)
-            return
-        }
-    }
+            const qId = currentQuestion;
+            const ansId = i + 1;
+            processAnswer(qId, ansId);
+            return;
+        };
+    };
     if (sessionID.length < minIdLength && evt.keyCode == '13') {
-        var name = document.getElementById('name_entry').value
+        var name = document.getElementById('name_entry').value;
         if (name.length > 1) {
-            formDisplay.classList.add('hide')
-            setSessionID(name)
-        }
-    }
-}
+            formDisplay.classList.add('hide');
+            setSessionID(name);
+        };
+    };
+};
 
 function showNameEntry() {
-    formDisplay.classList.remove('hide')
-    reset.textContent = "Press 0 to restart."
-    titleDisplay.append(reset)
-}
+    formDisplay.classList.remove('hide');
+    reset.textContent = "Press 0 to restart.";
+    titleDisplay.append(reset);
+};
 
 function setSessionID(name) {
-    formDisplay.classList.add('hide')
-    var date = new Date().toLocaleDateString()
-    userName = name
-    sessionID = name.concat(date)
-    session.classList.add('session-id')
-    session.textContent = name
-    populateQuestion(currentQuestion)
-}
+    formDisplay.classList.add('hide');
+    var date = new Date().toLocaleDateString();
+    userName = name;
+    sessionID = name.concat(date);
+    session.classList.add('session-id');
+    session.textContent = name;
+    populateQuestion(currentQuestion);
+};
 
 function processAnswer(questionId, answerId) {
-    chosenAnswers[questionId] = answerId
-    currentQuestion++
-    resetQuestion()
+    chosenAnswers[questionId] = answerId;
+    currentQuestion++;
+    resetQuestion();
     if (currentQuestion < numQuestions) {
-        populateQuestion(currentQuestion)
+        populateQuestion(currentQuestion);
     } else {
         //showAnswer();
-        // this is the end of the test, analyze the session data
+        // this is the end of the test, analyze the session data and show the results
         console.log("Sorting you into your house... \n");
         var S = new SessionData(sessionID, userName);
         analyzeSession(S, chosenAnswers);
         console.log(S);
-        showPieChart(S);
+        createChart(S);
     }
 }
 
-showStart()
+showStart();
