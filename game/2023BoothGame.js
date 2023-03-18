@@ -174,6 +174,9 @@ function resetGlobals() {
     chosenAnswers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     question = questions[currentQuestion];
     document.getElementById('name_entry').value = '';
+    // clear chart
+    var canvas = document.getElementById("myChart");
+    canvas.remove();
 };
 
 function resetQuiz() {
