@@ -101,7 +101,7 @@ const results = [
     { house: "Slytherin", code: "SLY", image: "images/slyth.jpg", desc: "Each house has a set of traits and characteristics associated with it, and those in Slytherin are known for being ambitious, cunning, and resourceful. Slytherins are also sometimes regarded as being evil thanks to the fact that many of the most sinister witches and wizards have been associated with this house." }
 ];
 
-const keyCodes = ['49', '50', '51', '52'];
+const keyCodes = ['49', '50', '51', '52', '9'];
 const numHouses = 4;
 const numQuestions = 10;
 const maxIdleTime = 59;
@@ -109,6 +109,7 @@ const minIdLength = 2;
 const enter = '13';
 const space = '32';
 const restart = '48';
+const nine = '9';
 const countString = "/".concat(numQuestions.toString());
 
 var sessionID = "";
