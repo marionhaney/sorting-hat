@@ -9,7 +9,7 @@ app.use(express.static('game'));
 app.listen(8080);
 
 // NOTES:
-// http://localhost:8080/2023BoothFormat.html
+// http://localhost:8080/SortingQuiz.html
 // npm start
 // Ctrl + C to kill server.js
 // installing packages to package.json: npm install PACKAGE_NAME --save
