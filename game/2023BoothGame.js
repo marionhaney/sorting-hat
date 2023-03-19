@@ -86,7 +86,7 @@ const questions = [
     {
         text: "Which path do you take?",
         answers: [
-            { text: 'Twisting leafy path through the woods', image: "graphics/woods.jpg" },
+            { text: 'Twisting leafy path through the woods', image: "graphics/forest.jpg" },
             { text: 'A dark, lantern-lit alley', image: "graphics/alley.jpg" },
             { text: 'A wide, sunny, grassy path', image: "graphics/grassy.jpg" },
             { text: 'A cobblestone street lined with ancient buildings', image: "graphics/street.jpg" }
