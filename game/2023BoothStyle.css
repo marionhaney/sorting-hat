@@ -3,6 +3,9 @@
 body {
     display: flex;
     justify-content: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 input {
@@ -16,16 +19,22 @@ label {
 }
 
 top-caption {
-    position: fixed;
     margin: 5px;
     width: 200px;
     text-align: right;
-    overflow: visible;
+    overflow: hidden;
 }
 
 section {
-    width: 600px;
-    float: left;
+    width: 100vw;
+    float: right;
+}
+
+chart {
+    float: none;
+    align-items: center;
+    background-color: rgb(255,61,158);
+    overflow: hidden;
 }
 
 img {
@@ -79,21 +88,20 @@ p {
     font-size: 20px;
     text-align: center;
     padding: 5%;
-    margin: 15px;
+    margin: auto;
     justify-content: center;
     align-content: center;
     white-space: pre;
-    overflow: visible;
     color: white;
     background-color: rgba(8, 32, 109, 0.8);
 }
 
 .start-block img {
-    width: 200px;
+    width: 100vw;
     height: 200px;
     position: absolute;
     display: flex;
-    overflow: clip;
+    overflow: hidden;
     margin: -35px 0px 0px -250px;
 }
 
@@ -104,13 +112,15 @@ p {
     justify-content: center;
     align-content: center;
     text-align: center;
+    width: 800px;
+    margin: auto;
 }
 
 .answer-options {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 16px 0 23px 0;
+    margin: auto;
     font-size: 10px;
 }
 
@@ -120,7 +130,7 @@ p {
     border-radius: 5px;
     box-shadow: rgba(0,0,0, 0.07) 0 0 0 1px;
     text-align: center;
-    margin-bottom: 15px;
+    margin: auto;
     overflow: hidden;
 }
 
