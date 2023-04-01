@@ -1,6 +1,7 @@
 // Personality Test: JS
 // Maddie Hagar, Marion Haney, Spring 2023 Harry Potter Booth Game
 
+
 const questions = [
     {
         text: "You and two friends need to cross a bridge guarded by a river troll who insists on fighting one of you before he will let all of you pass. Do you:",
@@ -100,6 +101,15 @@ const results = [
     { house: "Ravenclaw", code: "RAV", image: "graphics/raven.jpg", desc: "Ravenclaw is known for its wit, wisdom, and intelligence. To embody these traits, we can look to the famous alumni of Carnegie Mellon University, a prestigious institution known for producing top-notch scholars and innovators. One such example is Andrew Moore, who served as the Dean of the School of Computer Science at Carnegie Mellon and later worked for Google as the Vice President of Engineering. His expertise in machine learning and computer vision exemplifies the intellectual curiosity and analytical prowess that Ravenclaws are known for." },
     { house: "Slytherin", code: "SLY", image: "graphics/slyth.jpg", desc: "Slytherin is known for its cunning, ambition, and resourcefulness. To embody these traits, we can look to the famous alumni of Carnegie Mellon University who have shown similar characteristics. One such example is Ted Hoff, who co-invented the microprocessor and helped launch the computer revolution. Hoff's innovative and strategic thinking exemplifies the cunning and resourcefulness that Slytherins are known for." }
 ]
+
+const startAudio = new Audio('comeForth.mp3');
+const audio0 = new Audio('hogwarts_school_song.mp3');
+const audio1 = new Audio('very_difficult.mp3');
+const gryAudio = new Audio('griffindor.mp3');
+const hufAudio = new Audio('hufflepuff.mp3');
+const houseAudios = [gryAudio, hufAudio, gryAudio, hufAudio]
+const audiosx = [audio0, audio1, audio0, audio1, audio0, audio1, audio0, audio1, audio0, audio1]
+const audios = [gryAudio, gryAudio, gryAudio, gryAudio]
 
 const keyCodes = ['49', '50', '51', '52']
 const numHouses = 4
@@ -314,6 +324,7 @@ function handleKeyEvent(evt) {
         showNextQuestion(evt)
     } else if (evt.keyCode == enter) {
         startQuiz()
+        startAudio.play()
     }
 }
 
@@ -333,6 +344,7 @@ function showNextQuestion(evt) {
     if (!nameEntered) return
     for (var i = 0; i < numHouses; i++) {
         if (evt.keyCode == keyCodes[i]) {
+            // add logic to play random sound
             const qId = currentQuestion
             const ansId = i + 1
             processAnswer(qId, ansId)
@@ -363,6 +375,7 @@ function processAnswer(questionId, answerId) {
     currentQuestion++
     resetQuestion()
     if (currentQuestion < numQuestions) {
+        playRandomAudio()
         populateQuestion(currentQuestion)
     } else {
         var S = new SessionData(sessionID, userName);
@@ -375,6 +388,8 @@ function processAnswer(questionId, answerId) {
 function showAnswer(S) {
     finished = true
     var house = S.house
+    // add logic to play specific noise according to house
+    playHouseAudio(house)
     
     const answerBlock = document.createElement('div')
     answerBlock.classList.add('result-block')
@@ -398,6 +413,28 @@ function showAnswer(S) {
     
     answerBlock.append(answerTitle, answerDesc, answerImage)
     answerDisplay.append(session, answerBlock)
+}
+
+function playHouseAudio(house) {
+    if (house == 'Gryffindor') {
+        houseAudios[0].play()
+    } else if (house == 'Hufflepuff') {
+        houseAudios[1].play()
+    } else if (house == 'Slytherin') {
+        houseAudios[2].play()
+    } else if (house == 'Ravenclaw') {
+        houseAudios[3].play()
+    }
+}
+
+function playRandomAudio() {
+    randIndex = randomInt(audios.length-1)
+    audio = audios[randIndex]
+    audio.play()
+}
+
+function randomInt(max) {
+    return Math.floor(Math.random()*max)
 }
 
 showStart()
