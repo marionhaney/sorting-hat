@@ -382,6 +382,7 @@ function processAnswer(questionId, answerId) {
     if (currentQuestion < numQuestions) {
         // play sorting hat audio after the 2nd question
         if (currentQuestion == 2) {
+            stopAudio(titleAudio);
             difficultAudio.play();
             // call arduino here!
         }
@@ -398,7 +399,8 @@ function showAnswer(S) {
     finished = true
     var house = S.house
     // add logic to play specific noise according to house
-    playHouseAudio(house)
+    stopAudio(difficultAudio);
+    playHouseAudio(house);
     // call arduino here!
     
     const answerBlock = document.createElement('div')
@@ -435,14 +437,16 @@ function playHouseAudio(house) {
     } else if (house == 'Slytherin') {
         houseAudios[3].play();
     };
-    setTimeout(function() {
-    }, 3000);
-    hogwartsSongAudio.play();
 };
 
 
 function playTitleAudio() {
     titleAudio.play();
+};
+
+function stopAudio(a) {
+    a.pause();
+    a.currentTime = 0;
 };
 
 
