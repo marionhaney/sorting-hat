@@ -25,7 +25,7 @@ server.listen(8080, () => {
 console.log("Web Server Started go to 'http://localhost:8080' in your Browser.");
 
 // NOTES:
-// http://localhost:8080/SortingQuiz.html
+// http://localhost:8080
 // npm start
 // Ctrl + C to kill server.js
 // installing packages to package.json: npm install PACKAGE_NAME --save

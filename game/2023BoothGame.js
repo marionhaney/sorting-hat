@@ -106,21 +106,22 @@ const hogwartsSongAudio = new Audio('audio/hogwarts_school_song.mp3');
 const difficultAudio = new Audio('audio/very_difficult.m4a');
 const gryAudio = new Audio('audio/gryffindor.mp3');
 const hufAudio = new Audio('audio/hufflepuff.mp3');
-const slyAudio = new Audio('audio/gryffindor.mp3'); // change
-const ravAudio = new Audio('audio/gryffindor.mp3'); // change
+const slyAudio = new Audio('audio/slytherin.m4a');
+const ravAudio = new Audio('audio/ravenclaw.m4a');
 
 const houseAudios = [gryAudio, hufAudio, ravAudio, slyAudio];
 const audios = [difficultAudio, hogwartsSongAudio]; // add more random audios
 
 
 const keyCodes = ['49', '50', '51', '52']
+const colors = ['#E1E1E1', '#7ADFFF', '#61DE7A', '#FFF056']
 const numHouses = 4
 const numQuestions = 10
 const maxIdleTime = 59
 const minIdLength = 2
 const enter = '13'
 const space = '32'
-const restart = '48'
+//const restart = '48'
 const countString = "/".concat(numQuestions.toString())
 const titleImage = "graphics/TITLE.jpg"
 const startImage = document.createElement('img')
@@ -144,7 +145,7 @@ var counter = document.createElement('div')
 var session = document.createElement('div')
 var startScreen = document.createElement('div')
 var idleScreen = document.createElement('div')
-var reset = document.createElement('top-caption')
+//var reset = document.createElement('top-caption')
 var images = document.getElementsByTagName("img");
 var titleDisplay = document.querySelector('#titles')
 var questionDisplay = document.querySelector('#questions')
@@ -281,7 +282,7 @@ function resetQuestion() {
 
 function populateQuestion(index) {
     if (index == 0) titleDisplay.remove(startImage)
-    titleDisplay.append(reset)
+    //titleDisplay.append(reset)
     questionDisplay.append(session)
     question = questions[index]
     questionBlock.id = currentQuestion
@@ -310,6 +311,8 @@ function populateQuestion(index) {
         answerTitle.textContent = answer.text
 
         answerBlock.append(answerImage, answerTitle)
+        answerBlock.style.backgroundColor = colors[i]
+        answerBlock.style.boxShadow = colors[i]+" 0 0 0 5px"
         answersBlock.append(answerBlock)
     }
     questionDisplay.append(answersBlock)
@@ -320,8 +323,8 @@ function handleKeyEvent(evt) {
     if (idle && evt.keyCode == space) {
         idle = false
         hideIdleScreen()
-    } else if (nameEntered && evt.keyCode == restart) {
-        resetQuiz()
+    //} else if (nameEntered && evt.keyCode == restart) {
+        //resetQuiz()
     } else if (started) {
         showNextQuestion(evt)
     } else if (evt.keyCode == enter) {
@@ -357,9 +360,9 @@ function showNextQuestion(evt) {
 
 function showNameEntry() {
     formDisplay.classList.remove('hide')
-    reset.textContent = "Press 0 to restart."
+    //reset.textContent = "Press 0 to restart."
     titleDisplay.append(startImage)
-    titleDisplay.append(reset)
+    //titleDisplay.append(reset)
 }
 
 function setSessionID(name) {
@@ -386,8 +389,8 @@ function processAnswer(questionId, answerId) {
     } else {
         var S = new SessionData(sessionID, userName);
         analyzeSession(S, chosenAnswers);
-        createChart(S);
         showAnswer(S)
+        createChart(S);
     }
 }
 
@@ -411,14 +414,14 @@ function showAnswer(S) {
         result = results[id]
     }
 
-    const answerImage = document.createElement('img')
-    answerImage.setAttribute('src', result.image)
+    //const answerImage = document.createElement('img')
+    //answerImage.setAttribute('src', result.image)
     
     const answerDesc = document.createElement('p')
     const welcome = '\nWelcome to ' + result.house + ', '  + userName + '!'
     answerDesc.textContent = result.desc + welcome
     
-    answerBlock.append(answerTitle, answerDesc, answerImage)
+    answerBlock.append(answerTitle, answerDesc)//, answerImage)
     answerDisplay.append(session, answerBlock)
 }
 
@@ -432,6 +435,9 @@ function playHouseAudio(house) {
     } else if (house == 'Slytherin') {
         houseAudios[3].play();
     };
+    setTimeout(function() {
+    }, 3000);
+    hogwartsSongAudio.play();
 };
 
 
