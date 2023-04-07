@@ -1,6 +1,7 @@
 // launch the server and run the files in the views folder
 // Load Node modules
 var express = require('express');
+var Gpio = require('onoff').Gpio;
 // Initialise Express
 var app = express();
 // Render static files

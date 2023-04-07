@@ -115,7 +115,6 @@ const audios = [difficultAudio, hogwartsSongAudio]; // add more random audios
 
 
 // Raspberry Pi Input modules & input listener for LED buttons
-const { Gpio } = require( 'onoff' );
 // set each button to the corresponding keypress
 const ans1 = new Gpio( '49', 'in', 'both' ); // 1
 const ans2 = new Gpio( '50', 'in', 'both' ); // 2
