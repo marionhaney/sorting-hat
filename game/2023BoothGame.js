@@ -113,56 +113,6 @@ const houseAudios = [gryAudio, hufAudio, ravAudio, slyAudio];
 const audios = [difficultAudio, hogwartsSongAudio]; // add more random audios
 
 
-
-// Raspberry Pi Input modules & input listener for LED buttons
-// set each button to the corresponding keypress
-const ans1 = new Gpio( '49', 'in', 'both' ); // 1
-const ans2 = new Gpio( '50', 'in', 'both' ); // 2
-const ans3 = new Gpio( '51', 'in', 'both' ); // 3
-const ans4 = new Gpio( '52', 'in', 'both' ); // 4
-
-// Raspberry Pi button event listener
-// listen for pin voltage change
-ans1.watch( ( err, value ) => {
-    if( err ) {
-      console.log( 'Error', err );
-    }
-  
-    // log pin value (0 or 1)
-    console.log( 'Pin value for Answer 1', value );
-} );
-
-ans2.watch( ( err, value ) => {
-    if( err ) {
-      console.log( 'Error', err );
-    }
-  
-    // log pin value (0 or 1)
-    console.log( 'Pin value for Answer 2', value );
-} );
-
-ans3.watch( ( err, value ) => {
-    if( err ) {
-      console.log( 'Error', err );
-    }
-  
-    // log pin value (0 or 1)
-    console.log( 'Pin value for Answer 3', value );
-} );
-
-ans4.watch( ( err, value ) => {
-    if( err ) {
-      console.log( 'Error', err );
-    }
-  
-    // log pin value (0 or 1)
-    console.log( 'Pin value for Answer 4', value );
-} );
-
-
-
-
-
 const keyCodes = ['49', '50', '51', '52']
 const numHouses = 4
 const numQuestions = 10
@@ -209,7 +159,6 @@ window.setInterval(checkIdleTime, 900000)
 window.setInterval(incIdleTime, 1000)
 
 function showStart() {
-    playTitleAudio();
     startScreen.classList.add('start-block')
     startScreen.textContent = "Welcome to Kappa Alpha Theta's Spring 2023 booth! \nAre you excited to get sorted into your Hogwarts House? \nYou will be asked a series of questions with color coded answers. \nPress the button of the matching color to select your answer! \nPress enter to start. Have fun!"
     titleDisplay.append(startImage)
@@ -377,7 +326,7 @@ function handleKeyEvent(evt) {
         showNextQuestion(evt)
     } else if (evt.keyCode == enter) {
         startQuiz()
-        startAudio.play()
+        playTitleAudio();
     }
 }
 
