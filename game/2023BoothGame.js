@@ -377,7 +377,11 @@ function processAnswer(questionId, answerId) {
     currentQuestion++
     resetQuestion()
     if (currentQuestion < numQuestions) {
-        playRandomAudio()
+        // play sorting hat audio after the 2nd question
+        if (currentQuestion == 2) {
+            difficultAudio.play();
+            // call arduino here!
+        }
         populateQuestion(currentQuestion)
     } else {
         var S = new SessionData(sessionID, userName);
@@ -392,6 +396,7 @@ function showAnswer(S) {
     var house = S.house
     // add logic to play specific noise according to house
     playHouseAudio(house)
+    // call arduino here!
     
     const answerBlock = document.createElement('div')
     answerBlock.classList.add('result-block')
@@ -429,22 +434,10 @@ function playHouseAudio(house) {
     };
 };
 
-function playRandAudio() {
-    playCheck = randomInt(10);
-    // only play random audio half the time
-    if (playCheck % 2 == 0) {
-        randIndex = randomInt(audios.length-1);
-        let audio = audios[randIndex];
-        audio.play();
-    }
-};
 
 function playTitleAudio() {
     titleAudio.play();
 };
 
-function randomInt(max) {
-    return Math.floor(Math.random()*max)
-};
 
 showStart();
