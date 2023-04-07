@@ -1,5 +1,6 @@
 // launch the server and run the files in the views folder
 
+/**
 // Load Node modules
 var express = require('express');
 // Initialise Express
@@ -8,6 +9,20 @@ var app = express();
 app.use(express.static('game'));
 // Port website will run on
 app.listen(8080);
+*/
+
+const express = require('express');
+const app = express();
+const http = require('http');
+const server = http.createServer(app);
+app.get('/', (req, res) => {
+     res.sendFile('game/SortingQuiz.html');
+})
+
+server.listen(8080, () => {
+     console.log("listening on *:8080");
+});
+console.log("Web Server Started go to 'http://localhost:8080' in your Browser.");
 
 // NOTES:
 // http://localhost:8080/SortingQuiz.html
