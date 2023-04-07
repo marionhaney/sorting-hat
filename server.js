@@ -16,9 +16,9 @@ const app = express();
 const http = require('http');
 const server = http.createServer(app);
 app.get('/', (req, res) => {
-     res.sendFile('game/SortingQuiz.html');
+     res.sendFile(__dirname + '/game/SortingQuiz.html');
 })
-
+app.use(express.static(__dirname + '/game'));
 server.listen(8080, () => {
      console.log("listening on *:8080");
 });
