@@ -1,7 +1,6 @@
 // Personality Test: JS
 // Maddie Hagar, Marion Haney, Spring 2023 Harry Potter Booth Game
 
-
 const questions = [
     {
         text: "You and two friends need to cross a bridge guarded by a river troll who insists on fighting one of you before he will let all of you pass. Do you:",
@@ -116,7 +115,7 @@ const audios = [difficultAudio, hogwartsSongAudio]; // add more random audios
 
 
 // Raspberry Pi Input modules & input listener for LED buttons
-// const { Gpio } = require( 'onoff' ); gpio and onoff saved in npm package
+const { Gpio } = require( 'onoff' );
 // set each button to the corresponding keypress
 const ans1 = new Gpio( '49', 'in', 'both' ); // 1
 const ans2 = new Gpio( '50', 'in', 'both' ); // 2
