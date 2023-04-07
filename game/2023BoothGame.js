@@ -111,6 +111,55 @@ const houseAudios = [gryAudio, hufAudio, gryAudio, hufAudio]
 const audiosx = [audio0, audio1, audio0, audio1, audio0, audio1, audio0, audio1, audio0, audio1]
 const audios = [gryAudio, gryAudio, gryAudio, gryAudio]
 
+
+// Raspberry Pi Input modules & input listener for LED buttons
+const { Gpio } = require( 'onoff' );
+// set each button to the corresponding keypress
+const ans1 = new Gpio( '49', 'in', 'both' ); // 1
+const ans2 = new Gpio( '50', 'in', 'both' ); // 2
+const ans3 = new Gpio( '51', 'in', 'both' ); // 3
+const ans4 = new Gpio( '52', 'in', 'both' ); // 4
+
+// Raspberry Pi button event listener
+// listen for pin voltage change
+ans1.watch( ( err, value ) => {
+    if( err ) {
+      console.log( 'Error', err );
+    }
+  
+    // log pin value (0 or 1)
+    console.log( 'Pin value for Answer 1', value );
+  } );
+
+ans2.watch( ( err, value ) => {
+    if( err ) {
+      console.log( 'Error', err );
+    }
+  
+    // log pin value (0 or 1)
+    console.log( 'Pin value for Answer 2', value );
+  } );
+
+ans3.watch( ( err, value ) => {
+    if( err ) {
+      console.log( 'Error', err );
+    }
+  
+    // log pin value (0 or 1)
+    console.log( 'Pin value for Answer 3', value );
+  } );
+
+ans4.watch( ( err, value ) => {
+    if( err ) {
+      console.log( 'Error', err );
+    }
+  
+    // log pin value (0 or 1)
+    console.log( 'Pin value for Answer 4', value );
+  } );
+
+
+
 const keyCodes = ['49', '50', '51', '52']
 const numHouses = 4
 const numQuestions = 10
