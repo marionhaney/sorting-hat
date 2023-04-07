@@ -19,9 +19,12 @@
   "homepage": "https://github.com/marionhaney/sorting-hat#readme",
   "dependencies": {
     "chart.js": "^4.2.1",
+    "chrome-apps-serialport": "^1.0.9",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
+    "firmata-io": "^2.3.0",
     "johnny-five": "^2.1.0",
+    "node-gyp": "^9.3.1",
     "serialport": "^10.5.0",
     "socket.io": "^4.6.1"
   }
