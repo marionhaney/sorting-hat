@@ -160,6 +160,8 @@ ans4.watch( ( err, value ) => {
 
 
 
+
+
 const keyCodes = ['49', '50', '51', '52']
 const numHouses = 4
 const numQuestions = 10
