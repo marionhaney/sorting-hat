@@ -1,7 +1,8 @@
 // short mouth movements
-
-let five = require("johnny-five");
-let board = new five.Board();
+const {Board, Servo} = require("johnny-five");
+const board = new Board({
+     port: "/dev/cu.usbmodem141301"
+   });
 
 board.on("ready", () => {
     // Declare the Servo pin 
