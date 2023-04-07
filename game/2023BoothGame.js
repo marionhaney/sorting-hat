@@ -102,14 +102,17 @@ const results = [
     { house: "Slytherin", code: "SLY", image: "graphics/slyth.jpg", desc: "Slytherin is known for its cunning, ambition, and resourcefulness. To embody these traits, we can look to the famous alumni of Carnegie Mellon University who have shown similar characteristics. One such example is Ted Hoff, who co-invented the microprocessor and helped launch the computer revolution. Hoff's innovative and strategic thinking exemplifies the cunning and resourcefulness that Slytherins are known for." }
 ]
 
-const startAudio = new Audio('comeForth.mp3');
-const audio0 = new Audio('hogwarts_school_song.mp3');
-const audio1 = new Audio('very_difficult.mp3');
-const gryAudio = new Audio('griffindor.mp3');
-const hufAudio = new Audio('hufflepuff.mp3');
-const houseAudios = [gryAudio, hufAudio, gryAudio, hufAudio]
-const audiosx = [audio0, audio1, audio0, audio1, audio0, audio1, audio0, audio1, audio0, audio1]
-const audios = [gryAudio, gryAudio, gryAudio, gryAudio]
+const titleAudio = new Audio('audio/comeForth.mp3');
+const hogwartsSongAudio = new Audio('audio/hogwarts_school_song.mp3');
+const difficultAudio = new Audio('audio/very_difficult.m4a');
+const gryAudio = new Audio('audio/gryffindor.mp3');
+const hufAudio = new Audio('audio/hufflepuff.mp3');
+const slyAudio = new Audio('audio/slytherin.mp3');
+const ravAudio = new Audio('audio/ravenclaw.mp3')
+
+const houseAudios = [gryAudio, hufAudio, ravAudio, slyAudio];
+const audios = [difficultAudio, hogwartsSongAudio]; // add more random audios
+
 
 
 // Raspberry Pi Input modules & input listener for LED buttons
@@ -129,7 +132,7 @@ ans1.watch( ( err, value ) => {
   
     // log pin value (0 or 1)
     console.log( 'Pin value for Answer 1', value );
-  } );
+} );
 
 ans2.watch( ( err, value ) => {
     if( err ) {
@@ -138,7 +141,7 @@ ans2.watch( ( err, value ) => {
   
     // log pin value (0 or 1)
     console.log( 'Pin value for Answer 2', value );
-  } );
+} );
 
 ans3.watch( ( err, value ) => {
     if( err ) {
@@ -147,7 +150,7 @@ ans3.watch( ( err, value ) => {
   
     // log pin value (0 or 1)
     console.log( 'Pin value for Answer 3', value );
-  } );
+} );
 
 ans4.watch( ( err, value ) => {
     if( err ) {
@@ -156,7 +159,7 @@ ans4.watch( ( err, value ) => {
   
     // log pin value (0 or 1)
     console.log( 'Pin value for Answer 4', value );
-  } );
+} );
 
 
 
@@ -208,8 +211,9 @@ window.setInterval(checkIdleTime, 900000)
 window.setInterval(incIdleTime, 1000)
 
 function showStart() {
+    playTitleAudio();
     startScreen.classList.add('start-block')
-    startScreen.textContent = "Welcome to Kappa Alpha Theta's Spring 2023 booth! \nAre you excited to get sorted into your Hogwarts House? \nYou will be asked a series of questions with color coded answers. \nPress the button of the matching color to select your answer! \nPut on the hat and press enter to start. Have fun!"
+    startScreen.textContent = "Welcome to Kappa Alpha Theta's Spring 2023 booth! \nAre you excited to get sorted into your Hogwarts House? \nYou will be asked a series of questions with color coded answers. \nPress the button of the matching color to select your answer! \nPress enter to start. Have fun!"
     titleDisplay.append(startImage)
     titleDisplay.append(startScreen)
 }
@@ -468,24 +472,32 @@ function showAnswer(S) {
 
 function playHouseAudio(house) {
     if (house == 'Gryffindor') {
-        houseAudios[0].play()
+        houseAudios[0].play();
     } else if (house == 'Hufflepuff') {
-        houseAudios[1].play()
-    } else if (house == 'Slytherin') {
-        houseAudios[2].play()
+        houseAudios[1].play();
     } else if (house == 'Ravenclaw') {
-        houseAudios[3].play()
-    }
-}
+        houseAudios[2].play();
+    } else if (house == 'Slytherin') {
+        houseAudios[3].play();
+    };
+};
 
-function playRandomAudio() {
-    randIndex = randomInt(audios.length-1)
-    audio = audios[randIndex]
-    audio.play()
-}
+function playRandAudio() {
+    playCheck = randomInt(10);
+    // only play random audio half the time
+    if (playCheck % 2 == 0) {
+        randIndex = randomInt(audios.length-1);
+        let audio = audios[randIndex];
+        audio.play();
+    }
+};
+
+function playTitleAudio() {
+    titleAudio.play();
+};
 
 function randomInt(max) {
     return Math.floor(Math.random()*max)
-}
+};
 
-showStart()
+showStart();
