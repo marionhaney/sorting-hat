@@ -107,8 +107,8 @@ const hogwartsSongAudio = new Audio('audio/hogwarts_school_song.mp3');
 const difficultAudio = new Audio('audio/very_difficult.m4a');
 const gryAudio = new Audio('audio/gryffindor.mp3');
 const hufAudio = new Audio('audio/hufflepuff.mp3');
-const slyAudio = new Audio('audio/slytherin.mp3');
-const ravAudio = new Audio('audio/ravenclaw.mp3')
+const slyAudio = new Audio('audio/gryffindor.mp3'); // change
+const ravAudio = new Audio('audio/gryffindor.mp3'); // change
 
 const houseAudios = [gryAudio, hufAudio, ravAudio, slyAudio];
 const audios = [difficultAudio, hogwartsSongAudio]; // add more random audios
@@ -116,7 +116,7 @@ const audios = [difficultAudio, hogwartsSongAudio]; // add more random audios
 
 
 // Raspberry Pi Input modules & input listener for LED buttons
-const { Gpio } = require( 'onoff' );
+// const { Gpio } = require( 'onoff' ); gpio and onoff saved in npm package
 // set each button to the corresponding keypress
 const ans1 = new Gpio( '49', 'in', 'both' ); // 1
 const ans2 = new Gpio( '50', 'in', 'both' ); // 2
