@@ -16,8 +16,11 @@
             <script src = "/socket.io/socket.io.js"></script>
             <script>
                 const socket = io();
+                var buttonPress = "";
                 socket.on('button_press', function(data) {
-                    console.log('Received data from server: ' + data);    
+                    //console.log('Received data from server: ' + data);
+                    buttonPress = data;
+                    console.log("Button press is: ", buttonPress);
                 });
             </script>
         </section>
