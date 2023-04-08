@@ -8,6 +8,6 @@ function moveEyebrows() {
 };
 
 
-//moveEyebrows();
+moveEyebrows();
 
 //exec("node game/arduino/eyebrows.js");

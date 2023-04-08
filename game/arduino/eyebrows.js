@@ -1,5 +1,5 @@
 // eyebrow movements
-const {Board, Servo} = require("johnny-five");
+const {Board, Servos} = require("johnny-five");
 const board = new Board({
      port: "/dev/cu.usbmodem141401"
 });
@@ -7,12 +7,11 @@ const board = new Board({
 
 board.on("ready", () => {
   // Declare the Servo pin 
-  var servoPin4 = new Servo(4, type="continuous"); 
-  var servoPin5 = new Servo(5, type="continuous"); 
+  var servos = new Servos([4,5]);
 
-  board.repl.inject({servoPin4});
-  board.repl.inject({servoPin5});
+  board.repl.inject({servos});
+  servos.sweep([20,75,10]);
 
-  servoPin4.sweep([20,75]);
-  servoPin5.sweep([20,75]);
+  // stop the servos after 3 seconds
+  setTimeout(() => servos.stop(), 3000);
 });

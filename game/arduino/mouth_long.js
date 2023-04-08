@@ -1,31 +1,17 @@
 // long mouth movements
 
-const {Board, Servo} = require("johnny-five");
+const {Board, Servos} = require("johnny-five");
 const board = new Board({
-     port: "/dev/cu.usbmodem141301"
+     port: "/dev/cu.usbmodem141401"
    });
 
 board.on("ready", () => {
-    // Declare the Servo pin 
-    const servoPin2 = new Servo(2); 
-    const servoPin3 = new Servo(3); 
+  // Declare the Servo pin 
+  var servos = new Servos([2,3]);
 
-    servoPin2.to(5);
-    servoPin3.to(5);
-    setTimeout(function(){}, 1000);
-     
-    servoPin2.to(40);
-    servoPin3.to(40);
-    setTimeout(function() {
-    }, 1000);
+  board.repl.inject({servos});
+  servos.sweep([5,40,10]);
 
-    servoPin2.to(5);
-    servoPin3.to(5);
-    setTimeout(function() {
-    }, 1000);
-
-    servoPin2.sweep();
-    servoPin3.sweep();
-    setTimeout(function() {
-    }, 1000);
+  // stop the servos after 4 seconds
+  setTimeout(() => servos.stop(), 4000);
 })
