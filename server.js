@@ -1,16 +1,5 @@
 // launch the server and run the files in the views folder
 
-/**
-// Load Node modules
-var express = require('express');
-// Initialise Express
-var app = express();
-// Render static files
-app.use(express.static('game'));
-// Port website will run on
-app.listen(8080);
-*/
-
 const express = require('express');
 const app = express();
 const http = require('http').Server(app);
@@ -36,24 +25,25 @@ app.get('/', (req, res) => {
 })
 app.use(express.static(__dirname + '/game'));
 
+
 io.on('connection', function(socket) {
      console.log('A user connected');
   
-     //Whenever someone disconnects this piece of code executed
+     // Whenever someone disconnects this piece of code executed
      socket.on('disconnect', function () {
         console.log('A user disconnected');
      });
-});
 
-
-parser.on('data', function(data) {
+     parser.on('data', function(data) {
     
-     console.log('Received data from port: ' + data);
-     
-     io.emit('data', data);
-     
-});
+          console.log('Received data from port: ' + data);
+          
+          io.emit('data', data);
 
+          
+     });
+
+});
 
 
 http.listen(8080, () => {
