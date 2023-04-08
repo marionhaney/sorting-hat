@@ -15,7 +15,10 @@
         <section>
             <script src = "/socket.io/socket.io.js"></script>
             <script>
-               const socket = io();
+                const socket = io();
+                socket.on('button_press', function(data) {
+                    console.log('Received data from server: ' + data);    
+                });
             </script>
         </section>
 

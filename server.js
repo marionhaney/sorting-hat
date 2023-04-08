@@ -3,7 +3,6 @@
 const express = require('express');
 const app = express();
 const http = require('http').Server(app);
-//const server = http.createServer(app);
 const io = require('socket.io')(http);
 
 const { SerialPort } = require('serialport'); 
@@ -38,8 +37,7 @@ io.on('connection', function(socket) {
     
           console.log('Received data from port: ' + data);
           
-          io.emit('data', data);
-
+          io.emit('button_press', data);
           
      });
 
