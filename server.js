@@ -29,6 +29,10 @@ io.on('connection', function(socket) {
      console.log('A user connected');
   
      // Whenever someone disconnects this piece of code executed
+     /* TODO: when we refresh the page (restart the game) the button presses double
+     each time. parser.on registers twice, seems like a connection is not closing when we refresh
+     how can we close the connection properly?
+     */
      socket.on('disconnect', function () {
         console.log('A user disconnected');
      });

@@ -16,12 +16,6 @@
             <script src = "/socket.io/socket.io.js"></script>
             <script>
                 const socket = io();
-                var buttonPress = "";
-                socket.on('button_press', function(data) {
-                    //console.log('Received data from server: ' + data);
-                    buttonPress = data;
-                    console.log("Button press is: ", buttonPress);
-                });
             </script>
         </section>
 
@@ -42,7 +36,7 @@
                 <div id="container" style="width: 100%; height: 50%"></div>
             </chart>
             <section>
-                Pie chart using session data 
+                <!-- Pie chart using session data -->
                 <canvas id="myChart"></canvas>
                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             </section>

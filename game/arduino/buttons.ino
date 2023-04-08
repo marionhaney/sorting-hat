@@ -1,6 +1,6 @@
 // you can ignore all the files other than this one
 
-#define DELAY 200
+#define DELAY 300
 
 #define WHITE 13
 #define BLUE 12

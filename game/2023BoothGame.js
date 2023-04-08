@@ -1,6 +1,18 @@
 // Personality Test: JS
 // Maddie Hagar, Marion Haney, Spring 2023 Harry Potter Booth Game
 
+// object to store button presses
+var buttonPresses = {
+    presses: [], 
+    numPresses: 0
+};
+socket.on('button_press', function(data) {
+    var strData = data.substring(0, data.length - 1);
+    buttonPresses.presses.push(strData);
+    buttonPresses.numPresses += 1;
+    buttonShowNextQuestion(strData);
+});
+
 const questions = [
     {
         text: "You and two friends need to cross a bridge guarded by a river troll who insists on fighting one of you before he will let all of you pass. Do you:",
@@ -152,7 +164,10 @@ var questionDisplay = document.querySelector('#questions')
 var answerDisplay = document.querySelector('#answer')
 var formDisplay = document.querySelector('#form')
 
+
 document.addEventListener("keyup", handleKeyEvent)
+
+
 idleScreen.classList.add('idle')
 idleScreen.classList.add('hide')
 questionDisplay.append(idleScreen)
@@ -346,16 +361,33 @@ function showNextQuestion(evt) {
         setSessionID(name)
         nameEntered = true
     }
+
     if (!nameEntered) return
+
     for (var i = 0; i < numHouses; i++) {
+        // 1,2,3,4 keyboard presses
         if (evt.keyCode == keyCodes[i]) {
-            // add logic to play random sound
             const qId = currentQuestion
             const ansId = i + 1
             processAnswer(qId, ansId)
             return
         }
     }
+}
+
+function buttonShowNextQuestion(strData) {
+    // answer 1,2,3,4
+    // check buttonPresses
+    console.log("button was pressed!");
+    // there was a new button press
+    buttonPresses.prevPresses += 1;
+    const qId = currentQuestion;
+    // white: 1, blue: 2, green: 3, yellow: 4
+    const colorMapping = {"WHITE":1, "BLUE":2, "GREEN":3, "YELLOW":4};
+    // get the most recent button press
+    const ansId = colorMapping.strData;
+    processAnswer(qId, ansId);
+    return;
 }
 
 function showNameEntry() {
