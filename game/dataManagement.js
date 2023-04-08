@@ -46,6 +46,7 @@ allSessions = new AllSessionData();
 
 // function for analyzing the results, takes in a SessionData object and the array of chosen answers
 function analyzeSession(S, chosenAnswers) {
+    
     for (let i = 0; i <= 9; i++) {
         answer = chosenAnswers[i];
         vals = QALookup[i, answer];

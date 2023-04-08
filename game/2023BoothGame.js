@@ -378,14 +378,21 @@ function showNextQuestion(evt) {
 function buttonShowNextQuestion(strData) {
     // answer 1,2,3,4
     // check buttonPresses
-    console.log("button was pressed!");
+    //console.log("button was pressed!");
     // there was a new button press
     buttonPresses.prevPresses += 1;
     const qId = currentQuestion;
     // white: 1, blue: 2, green: 3, yellow: 4
-    const colorMapping = {"WHITE":1, "BLUE":2, "GREEN":3, "YELLOW":4};
-    // get the most recent button press
-    const ansId = colorMapping.strData;
+    var ansId = -1;
+    if (strData == "WHITE") {
+        ansId = 1;
+    } else if (strData == "BLUE") {
+        ansId = 2;
+    } else if (strData == "GREEN") {
+        ansId = 3;
+    } else {
+        ansId = 4;
+    }
     processAnswer(qId, ansId);
     return;
 }
