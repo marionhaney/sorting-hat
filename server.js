@@ -9,7 +9,7 @@ const { SerialPort } = require('serialport');
 const { ReadlineParser} = require('@serialport/parser-readline');
 const port = new SerialPort(
     { baudRate: 9600 ,
-        path: '/dev/cu.usbmodem141401'});
+        path: '/dev/cu.usbmodem24401'}); // might need to change path-- check arduino
 const parser = port.pipe(new ReadlineParser({ delimiter: '\n' }));
 
 
