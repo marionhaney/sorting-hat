@@ -2,6 +2,7 @@
 
 const express = require('express');
 const app = express();
+
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
@@ -11,9 +12,6 @@ const port = new SerialPort(
     { baudRate: 9600 ,
         path: '/dev/cu.usbmodem24401'}); // might need to change path-- check arduino
 const parser = port.pipe(new ReadlineParser({ delimiter: '\n' }));
-
-// for executing shell scripts
-const { exec } = require("child_process");
 
 
 // Read the port data
@@ -55,6 +53,7 @@ http.listen(8080, () => {
      console.log("listening on *:8080");
 });
 console.log("Web Server Started go to 'http://localhost:8080' in your Browser.");
+
 
 
 // NOTES:

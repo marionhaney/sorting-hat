@@ -2,8 +2,8 @@
 
 const {Board, Servos} = require("johnny-five");
 const board = new Board({
-     port: "/dev/cu.usbmodem141401"
-   });
+  port: "/dev/cu.usbmodem24401"
+});
 
 board.on("ready", () => {
   // Declare the Servo pin 
@@ -12,6 +12,7 @@ board.on("ready", () => {
   board.repl.inject({servos});
   servos.sweep([5,40,10]);
 
-  // stop the servos after 4 seconds
-  setTimeout(() => servos.stop(), 4000);
+  // stop the servos after 10 seconds
+  setTimeout(() => servos.stop(), 10000);
+  setTimeout(() => board.close(), 12000);
 })
