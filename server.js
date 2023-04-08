@@ -12,6 +12,9 @@ const port = new SerialPort(
         path: '/dev/cu.usbmodem24401'}); // might need to change path-- check arduino
 const parser = port.pipe(new ReadlineParser({ delimiter: '\n' }));
 
+// for executing shell scripts
+const { exec } = require("child_process");
+
 
 // Read the port data
 port.on("open", () => {
