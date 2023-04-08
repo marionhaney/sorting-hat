@@ -1,7 +1,7 @@
 // eyebrow movements
 const {Board, Servos} = require("johnny-five");
 const board = new Board({
-     port: "/dev/cu.usbmodem141401"
+     port: "/dev/cu.usbmodem24401"
 });
   
 
