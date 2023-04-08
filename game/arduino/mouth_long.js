@@ -12,8 +12,7 @@ board.on("ready", () => {
 
     servoPin2.to(5);
     servoPin3.to(5);
-    setTimeout(function() {
-    }, 1000);
+    setTimeout(function(){}, 1000);
      
     servoPin2.to(40);
     servoPin3.to(40);
