@@ -116,7 +116,9 @@ const results = [
 
 const titleAudio = new Audio('audio/comeForth.mp3');
 const hogwartsSongAudio = new Audio('audio/hogwarts_school_song.mp3');
-const difficultAudio = new Audio('audio/very_difficult.m4a');
+const difficultAudio = new Audio('audio/difficult-very-difficult.m4a');
+const courageAudio = new Audio('audio/plenty-of-courage.m4a');
+const whereToPutAudio = new Audio('audio/but-where-to-put-you.m4a');
 const gryAudio = new Audio('audio/gryffindor.mp3');
 const hufAudio = new Audio('audio/hufflepuff.mp3');
 const slyAudio = new Audio('audio/slytherin.m4a');
@@ -399,10 +401,9 @@ function buttonShowNextQuestion(strData) {
 }
 
 function showNameEntry() {
-    formDisplay.classList.remove('hide')
-    //reset.textContent = "Press 0 to restart."
-    titleDisplay.append(startImage)
-    //titleDisplay.append(reset)
+    formDisplay.classList.remove('hide');
+    titleDisplay.append(startImage);
+    socket.emit('send', "eyebrows\n");
 }
 
 function setSessionID(name) {
@@ -421,12 +422,16 @@ function processAnswer(questionId, answerId) {
     resetQuestion()
     if (currentQuestion < numQuestions) {
         // play sorting hat audio after the 2nd question
-        if (currentQuestion == 1) {
-            socket.emit('send', "eyebrows\n");
-        } else if (currentQuestion == 2) {
+        if (currentQuestion == 2) {
             stopAudio(titleAudio);
-            difficultAudio.play();
-            socket.emit('send', "mouthShort\n");
+            socket.emit('send', "mouthLong\n");
+            setTimeout(difficultAudio.play(), 2000);
+        } else if (currentQuestion == 5) {
+            socket.emit('send', "mouthLong\n");
+            setTimeout(courageAudio.play(), 2000);
+        } else if (currentQuestion == 8) {
+            socket.emit('send', "mouthLong\n");
+            setTimeout(whereToPutAudio.play(), 2000);
         }
         populateQuestion(currentQuestion)
     } else {
@@ -442,8 +447,9 @@ function showAnswer(S) {
     var house = S.house
     // add logic to play specific noise according to house
     stopAudio(difficultAudio);
-    playHouseAudio(house);
-    // call arduino here!
+    setTimeout(playHouseAudio(house), 1500);
+    socket.emit('send', "mouthShort\n");
+    setTimeout(socket.emit('send', "eyebrows\n"), 5000);
     
     const answerBlock = document.createElement('div')
     answerBlock.classList.add('result-block')
@@ -457,15 +463,12 @@ function showAnswer(S) {
         id++
         result = results[id]
     }
-
-    //const answerImage = document.createElement('img')
-    //answerImage.setAttribute('src', result.image)
     
     const answerDesc = document.createElement('p')
     const welcome = '\nWelcome to ' + result.house + ', '  + userName + '!'
     answerDesc.textContent = result.desc + welcome
     
-    answerBlock.append(answerTitle, answerDesc)//, answerImage)
+    answerBlock.append(answerTitle, answerDesc)
     answerDisplay.append(session, answerBlock)
 }
 
