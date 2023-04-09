@@ -348,6 +348,7 @@ function handleKeyEvent(evt) {
     } else if (evt.keyCode == enter) {
         startQuiz()
         playTitleAudio();
+        socket.emit('send', "eyebrows\n");
     }
 }
 
@@ -403,7 +404,6 @@ function buttonShowNextQuestion(strData) {
 function showNameEntry() {
     formDisplay.classList.remove('hide');
     titleDisplay.append(startImage);
-    socket.emit('send', "eyebrows\n");
 }
 
 function setSessionID(name) {
@@ -424,14 +424,14 @@ function processAnswer(questionId, answerId) {
         // play sorting hat audio after the 2nd question
         if (currentQuestion == 2) {
             stopAudio(titleAudio);
+            setTimeout(playDifficult, 1330);
             socket.emit('send', "mouthLong\n");
-            setTimeout(difficultAudio.play(), 2000);
         } else if (currentQuestion == 5) {
+            setTimeout(playCourage, 1330);
             socket.emit('send', "mouthLong\n");
-            setTimeout(courageAudio.play(), 2000);
         } else if (currentQuestion == 8) {
+            setTimeout(playWhere, 1330);
             socket.emit('send', "mouthLong\n");
-            setTimeout(whereToPutAudio.play(), 2000);
         }
         populateQuestion(currentQuestion)
     } else {
@@ -446,10 +446,8 @@ function showAnswer(S) {
     finished = true
     var house = S.house
     // add logic to play specific noise according to house
-    stopAudio(difficultAudio);
-    setTimeout(playHouseAudio(house), 1500);
+    setTimeout(playHouseAudio, 1330, house);
     socket.emit('send', "mouthShort\n");
-    setTimeout(socket.emit('send', "eyebrows\n"), 5000);
     
     const answerBlock = document.createElement('div')
     answerBlock.classList.add('result-block')
@@ -487,6 +485,18 @@ function playHouseAudio(house) {
 
 function playTitleAudio() {
     titleAudio.play();
+};
+
+function playDifficult() {
+    difficultAudio.play();
+};
+
+function playCourage() {
+    courageAudio.play();
+};
+
+function playWhere() {
+    whereToPutAudio.play();
 };
 
 function stopAudio(a) {
