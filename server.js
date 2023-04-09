@@ -1,4 +1,6 @@
 // launch the server and run the files in the views folder
+// HAT: '/dev/cu.usbmodem24301'
+// BUTTONS: '/dev/cu.usbmodem24401'
 
 const express = require('express');
 const app = express();
@@ -13,7 +15,7 @@ const { ReadlineParser} = require('@serialport/parser-readline');
 // port for the buttons
 const portButtons = new SerialPort(
     { baudRate: 9600 ,
-          path: '/dev/cu.usbmodem24301'}); // might need to change path-- check arduino
+          path: '/dev/cu.usbmodem24401'}); // might need to change path-- check arduino
 const parserButtons = portButtons.pipe(new ReadlineParser({ delimiter: '\n' }));
 // open the port for buttons
 portButtons.on("open", () => {
@@ -21,17 +23,17 @@ portButtons.on("open", () => {
 });
 
 
-/*
+
 // port for the hat
 const portHat = new SerialPort(
      { baudRate: 9600 ,
-          path: '/dev/cu.usbmodem24401'}); // might need to change path-- check arduino
-const parserHat = portHat.pipe(new ReadlineParser({ delimiter: '\n'}));
+          path: '/dev/cu.usbmodem24301'}); // might need to change path-- check arduino
+// const parserHat = portHat.pipe(new ReadlineParser({ delimiter: '\n'}));
 // open the port for the hat
 portHat.on("open", () => {
      console.log('serial port for the hat open');
 });
-*/
+
 
 
 
