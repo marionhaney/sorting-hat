@@ -422,11 +422,11 @@ function processAnswer(questionId, answerId) {
     if (currentQuestion < numQuestions) {
         // play sorting hat audio after the 2nd question
         if (currentQuestion == 1) {
-            socket.emit('send', "GO\n");
+            socket.emit('send', "eyebrows\n");
         } else if (currentQuestion == 2) {
             stopAudio(titleAudio);
             difficultAudio.play();
-            // call arduino here!
+            socket.emit('send', "mouthShort\n");
         }
         populateQuestion(currentQuestion)
     } else {
