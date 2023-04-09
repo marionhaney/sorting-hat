@@ -28,10 +28,23 @@ portButtons.on("open", () => {
 const portHat = new SerialPort(
      { baudRate: 9600 ,
           path: '/dev/cu.usbmodem24301'}); // might need to change path-- check arduino
-// const parserHat = portHat.pipe(new ReadlineParser({ delimiter: '\n'}));
+const parserHat = portHat.pipe(new ReadlineParser({ delimiter: '\n'}));
 // open the port for the hat
 portHat.on("open", () => {
      console.log('serial port for the hat open');
+     let lastMsg;
+     io.on("connection", socket => {
+          socket.emit("connected");
+          parserHat.on("data", data => {
+               let lastMsg;
+               if (lastMsg != data) {
+                    console.log("Sending to hat: ", data);
+                    socket.emit("data", data);
+               };
+               lastMsg = data;
+          });
+
+     });
 });
 
 
@@ -44,7 +57,7 @@ app.get('/', (req, res) => {
 app.use(express.static(__dirname + '/game'));
 
 
-// set the parser for the buttons input data
+// set the parser for the buttons input data and connect the socket for sending the hat messages
 io.on('connection', function(socket) {
      console.log('A user connected');
   
@@ -65,14 +78,9 @@ io.on('connection', function(socket) {
           io.emit('button_press', data);
           
      });
-     
 
 });
 
-/*
-// write data to arduino for the hat to move
-portHat.write("GO\n");
-*/
 
 
 http.listen(8080, () => {

@@ -420,7 +420,11 @@ function processAnswer(questionId, answerId) {
     resetQuestion()
     if (currentQuestion < numQuestions) {
         // play sorting hat audio after the 2nd question
-        if (currentQuestion == 2) {
+        if (currentQuestion == 1) {
+            socket.on("data", (arg) => {
+                console.log("sending ", arg, " message to hat")
+            })
+        } else if (currentQuestion == 2) {
             stopAudio(titleAudio);
             difficultAudio.play();
             // call arduino here!
