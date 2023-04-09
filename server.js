@@ -13,7 +13,7 @@ const { ReadlineParser} = require('@serialport/parser-readline');
 // port for the buttons
 const portButtons = new SerialPort(
     { baudRate: 9600 ,
-          path: '/dev/cu.usbmodem24401'}); // might need to change path-- check arduino
+          path: '/dev/cu.usbmodem24301'}); // might need to change path-- check arduino
 const parserButtons = portButtons.pipe(new ReadlineParser({ delimiter: '\n' }));
 // open the port for buttons
 portButtons.on("open", () => {
@@ -58,7 +58,7 @@ io.on('connection', function(socket) {
      
      parserButtons.on('data', function(data) {
     
-          console.log('Received data from port: ' + data);
+          //console.log('Received data from port: ' + data);
           
           io.emit('button_press', data);
           
