@@ -2,7 +2,7 @@
 
 const {Board, Servos} = require("johnny-five");
 const board = new Board({
-  port: "/dev/cu.usbmodem24401"
+  port: "/dev/cu.usbmodem24301"
 });
 
 board.on("ready", () => {

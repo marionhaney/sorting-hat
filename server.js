@@ -32,20 +32,12 @@ const parserHat = portHat.pipe(new ReadlineParser({ delimiter: '\n'}));
 // open the port for the hat
 portHat.on("open", () => {
      console.log('serial port for the hat open');
-     let lastMsg;
-     io.on("connection", socket => {
-          socket.emit("connected");
-          parserHat.on("data", data => {
-               let lastMsg;
-               if (lastMsg != data) {
-                    console.log("Sending to hat: ", data);
-                    socket.emit("data", data);
-               };
-               lastMsg = data;
-          });
-
-     });
 });
+portHat.on('data', function(data) {
+     console.log("Emitting data");
+     io.emit('data', data);
+});
+
 
 
 
@@ -78,6 +70,13 @@ io.on('connection', function(socket) {
           io.emit('button_press', data);
           
      });
+
+     
+     socket.on('send', function(data) {
+          console.log("Sending message to hat ", data);
+          portHat.write(data);
+     });
+     
 
 });
 

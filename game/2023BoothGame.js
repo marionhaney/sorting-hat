@@ -13,6 +13,7 @@ socket.on('button_press', function(data) {
     buttonShowNextQuestion(strData);
 });
 
+
 const questions = [
     {
         text: "You and two friends need to cross a bridge guarded by a river troll who insists on fighting one of you before he will let all of you pass. Do you:",
@@ -421,9 +422,7 @@ function processAnswer(questionId, answerId) {
     if (currentQuestion < numQuestions) {
         // play sorting hat audio after the 2nd question
         if (currentQuestion == 1) {
-            socket.on("data", (arg) => {
-                console.log("sending ", arg, " message to hat")
-            })
+            socket.emit('send', "GO\n");
         } else if (currentQuestion == 2) {
             stopAudio(titleAudio);
             difficultAudio.play();
