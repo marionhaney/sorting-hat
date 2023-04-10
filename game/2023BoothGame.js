@@ -146,7 +146,7 @@ var sessionID = ""
 var userName = ""
 var result = ""
 var started = false
-var nameEntered = false
+var nameEntered = true
 var finished = false
 var idle = false
 var idleTime = 0
@@ -203,13 +203,13 @@ function resetGlobals() {
     result = ""
     started = false
     finished = false
-    nameEntered = false
+    nameEntered = true
     idle = false
     idleTime = 0
     currentQuestion = 0
     chosenAnswers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     question = questions[currentQuestion]
-    document.getElementById('name_entry').value = ''
+    //document.getElementById('name_entry').value = ''
     // clear chart
     var canvas = document.getElementById("myChart");
     canvas.remove();
@@ -355,23 +355,25 @@ function handleKeyEvent(evt) {
 function startQuiz() {
     started = true
     resetQuestion()
-    showNameEntry()
+    populateQuestion(currentQuestion)
+    //showNameEntry()
 }
 
 function showNextQuestion(evt) {
-    if (sessionID.length < minIdLength && evt.keyCode == '13') {
+    /*if (sessionID.length < minIdLength && evt.keyCode == '13') {
         var name = document.getElementById('name_entry').value
         formDisplay.classList.add('hide')
         setSessionID(name)
         nameEntered = true
     }
 
-    if (!nameEntered) return
+    if (!nameEntered) return*/
 
     for (var i = 0; i < numHouses; i++) {
         // 1,2,3,4 keyboard presses
         if (evt.keyCode == keyCodes[i]) {
             const qId = currentQuestion
+            if (qId == 10) return
             const ansId = i + 1
             processAnswer(qId, ansId)
             return
@@ -386,6 +388,7 @@ function buttonShowNextQuestion(strData) {
     // there was a new button press
     buttonPresses.prevPresses += 1;
     const qId = currentQuestion;
+    if (qId == 10) return;
     // white: 1, blue: 2, green: 3, yellow: 4
     var ansId = -1;
     if (strData == "WHITE") {
@@ -401,7 +404,7 @@ function buttonShowNextQuestion(strData) {
     return;
 }
 
-function showNameEntry() {
+/*function showNameEntry() {
     formDisplay.classList.remove('hide');
     titleDisplay.append(startImage);
 }
@@ -414,7 +417,7 @@ function setSessionID(name) {
     session.classList.add('session-id')
     session.textContent = name
     populateQuestion(currentQuestion)
-}
+}*/
 
 function processAnswer(questionId, answerId) {
     chosenAnswers[questionId] = answerId
@@ -463,7 +466,7 @@ function showAnswer(S) {
     }
     
     const answerDesc = document.createElement('p')
-    const welcome = '\nWelcome to ' + result.house + ', '  + userName + '!'
+    const welcome = '\nWelcome to ' + result.house + userName + '!'
     answerDesc.textContent = result.desc + welcome
     
     answerBlock.append(answerTitle, answerDesc)
