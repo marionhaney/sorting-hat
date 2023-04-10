@@ -449,7 +449,7 @@ function showAnswer(S) {
     finished = true
     var house = S.house
     // add logic to play specific noise according to house
-    setTimeout(playHouseAudio, 1330, house);
+    setTimeout(playHouseAudio, 1100, house);
     socket.emit('send', "mouthShort\n");
     
     const answerBlock = document.createElement('div')
