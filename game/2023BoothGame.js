@@ -132,24 +132,21 @@ const keyCodes = ['49', '50', '51', '52']
 const colors = ['#E1E1E1', '#7ADFFF', '#61DE7A', '#FFF056']
 const numHouses = 4
 const numQuestions = 10
-const maxIdleTime = 59
-const minIdLength = 2
 const enter = '13'
 const space = '32'
-//const restart = '48'
+const restart = '48'
 const countString = "/".concat(numQuestions.toString())
 const titleImage = "graphics/TITLE.jpg"
 const startImage = document.createElement('img')
+const blankImage = "graphics/blank.png"
 startImage.setAttribute('src', titleImage)
 
 var sessionID = ""
 var userName = ""
 var result = ""
 var started = false
-var nameEntered = true
+var instructionsShowed = false
 var finished = false
-var idle = false
-var idleTime = 0
 var currentQuestion = 0
 var chosenAnswers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 var question = questions[currentQuestion]
@@ -159,42 +156,35 @@ var answersBlock = document.createElement('div')
 var counter = document.createElement('div')
 var session = document.createElement('div')
 var startScreen = document.createElement('div')
-var idleScreen = document.createElement('div')
-//var reset = document.createElement('top-caption')
+var reset = document.createElement('top-caption')
 var images = document.getElementsByTagName("img");
 var titleDisplay = document.querySelector('#titles')
+var instructionsButton = document.createElement('button')
+var startButton = document.createElement('button')
 var questionDisplay = document.querySelector('#questions')
 var answerDisplay = document.querySelector('#answer')
-var formDisplay = document.querySelector('#form')
-
 
 document.addEventListener("keyup", handleKeyEvent)
-
-
-idleScreen.classList.add('idle')
-idleScreen.classList.add('hide')
-questionDisplay.append(idleScreen)
-window.setInterval(checkIdleTime, 900000)
-window.setInterval(incIdleTime, 1000)
+startButton.addEventListener("mouseup", handleClickEvent)
+instructionsButton.addEventListener("mouseup", handleClickEvent)
 
 function showStart() {
     startScreen.classList.add('start-block')
-    startScreen.textContent = "Welcome to Kappa Alpha Theta's Spring 2023 booth! \nAre you excited to get sorted into your Hogwarts House? \nYou will be asked a series of questions with color coded answers. \nPress the button of the matching color to select your answer! \nPress enter to start. Have fun!"
-    titleDisplay.append(startImage)
-    titleDisplay.append(startScreen)
+    startScreen.textContent = "Welcome to Kappa Alpha Theta's Spring 2023 booth! \nAre you excited to get sorted into your Hogwarts House? \n Click the button below to view the instructions before starting!\n"
+    instructionsButton.textContent = "Show Instructions"
+    startScreen.append(instructionsButton)
+    questionDisplay.append(startImage)
+    questionDisplay.append(startScreen)
 }
 
-function incIdleTime() {
-    idleTime++
-    if (idle) {
-        showIdleScreen()
-    }
-}
-
-function checkIdleTime() {
-    if (idleTime >= maxIdleTime && !finished) {
-        showIdleScreen()
-    }
+function showInstructions() {
+    instructionsShowed = true
+    startScreen.classList.add('start-block')
+    startScreen.textContent = "You will be asked a series of questions with color coded answers. \nPress the button of the matching color to select your answer! \n Click the start button to begin. Have fun!\n"
+    startButton.textContent = "Start"
+    startScreen.append(startButton)
+    questionDisplay.append(startImage)
+    questionDisplay.append(startScreen)
 }
 
 function resetGlobals() {
@@ -203,77 +193,28 @@ function resetGlobals() {
     result = ""
     started = false
     finished = false
-    nameEntered = true
-    idle = false
-    idleTime = 0
+    instructionsShowed = false
     currentQuestion = 0
     chosenAnswers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     question = questions[currentQuestion]
-    //document.getElementById('name_entry').value = ''
+    buttonPresses.presses = []
+    buttonPresses.numPresses = 0
     // clear chart
-    var canvas = document.getElementById("myChart");
+    canvas = document.getElementById("myChart");
     canvas.remove();
 }
 
 function resetQuiz() {
+    //window.location.reload(); 
     resetQuestion()
     resetGlobals()
-    showStart()
+    //showStart()
 }
 
-function hideQuizScreen() {
-    for (var i = 0; i < questionBlock.children.length; i++) {
-        var child = questionBlock.children[i]
-        child.classList.add('hide')
+function removeTitleScreen() {
+    while (questionDisplay.firstChild) {
+        questionDisplay.removeChild(questionDisplay.firstChild)
     }
-    for (var i = 0; i < questionHeading.children.length; i++) {
-        var child = questionHeading.children[i]
-        child.classList.add('hide')
-    }
-    for (var i = 0; i < answersBlock.children.length; i++) {
-        var child = answersBlock.children[i]
-        child.classList.add('hide')
-    }
-    for (var i = 0; i < questionDisplay.children.length; i++) {
-        var child = questionDisplay.children[i]
-        child.classList.add('hide')
-    }
-}
-
-function restoreQuizScreen() {
-    for (var i = 0; i < questionBlock.children.length; i++) {
-        var child = questionBlock.children[i]
-        child.classList.remove('hide')
-    }
-    for (var i = 0; i < questionHeading.children.length; i++) {
-        var child = questionHeading.children[i]
-        child.classList.remove('hide')
-    }
-    for (var i = 0; i < answersBlock.children.length; i++) {
-        var child = answersBlock.children[i]
-        child.classList.remove('hide')
-    }
-    for (var i = 0; i < questionDisplay.children.length; i++) {
-        var child = questionDisplay.children[i]
-        child.classList.remove('hide')
-    }
-
-}
-
-function showIdleScreen() {
-    idle = true
-    hideQuizScreen()
-    const time = idleTime.toString()
-    const idleTxt = "You've been idle for " + time + "s. Press space to resume."
-    idleScreen.textContent = idleTxt
-    titleDisplay.append(startImage)
-    idleScreen.classList.remove('hide')
-}
-
-function hideIdleScreen() {
-    restoreQuizScreen()
-    titleDisplay.remove(startImage)
-    idleScreen.classList.add('hide')
 }
 
 function resetQuestion() {
@@ -292,10 +233,6 @@ function resetQuestion() {
     while (answerDisplay.firstChild) {
         answerDisplay.removeChild(answerDisplay.firstChild)
     }
-    while (titleDisplay.firstChild) {
-        titleDisplay.removeChild(titleDisplay.firstChild)
-    }
-    formDisplay.classList.add('hide')
 }
 
 function populateQuestion(index) {
@@ -336,44 +273,36 @@ function populateQuestion(index) {
     questionDisplay.append(answersBlock)
 }
 
+function handleClickEvent(evt) {
+    startQuiz()
+}
+
 function handleKeyEvent(evt) {
-    idleTime = 0
-    if (idle && evt.keyCode == space) {
-        idle = false
-        hideIdleScreen()
-    //} else if (nameEntered && evt.keyCode == restart) {
-        //resetQuiz()
-    } else if (started) {
+    if (instructionsShowed && evt.keyCode == restart) {
+        resetQuiz()
+        showStart()
+    } else if (started && instructionsShowed) {
         showNextQuestion(evt)
-    } else if (evt.keyCode == enter) {
-        startQuiz()
-        playTitleAudio();
-        socket.emit('send', "eyebrows\n");
     }
 }
 
 function startQuiz() {
-    started = true
-    resetQuestion()
-    populateQuestion(currentQuestion)
-    //showNameEntry()
+    removeTitleScreen()
+    if (!instructionsShowed) {
+        showInstructions()
+        playTitleAudio()
+    } else {
+        started = true
+        populateQuestion(0)
+    } 
 }
 
 function showNextQuestion(evt) {
-    /*if (sessionID.length < minIdLength && evt.keyCode == '13') {
-        var name = document.getElementById('name_entry').value
-        formDisplay.classList.add('hide')
-        setSessionID(name)
-        nameEntered = true
-    }
-
-    if (!nameEntered) return*/
-
+    if (currentQuestion == 10) return
     for (var i = 0; i < numHouses; i++) {
         // 1,2,3,4 keyboard presses
         if (evt.keyCode == keyCodes[i]) {
             const qId = currentQuestion
-            if (qId == 10) return
             const ansId = i + 1
             processAnswer(qId, ansId)
             return
@@ -404,20 +333,6 @@ function buttonShowNextQuestion(strData) {
     return;
 }
 
-/*function showNameEntry() {
-    formDisplay.classList.remove('hide');
-    titleDisplay.append(startImage);
-}
-
-function setSessionID(name) {
-    formDisplay.classList.add('hide')
-    var date = new Date().toLocaleDateString()
-    userName = name
-    sessionID = name.concat(date)
-    session.classList.add('session-id')
-    session.textContent = name
-    populateQuestion(currentQuestion)
-}*/
 
 function processAnswer(questionId, answerId) {
     chosenAnswers[questionId] = answerId
@@ -428,13 +343,13 @@ function processAnswer(questionId, answerId) {
         if (currentQuestion == 2) {
             stopAudio(titleAudio);
             setTimeout(playDifficult, 1330);
-            socket.emit('send', "mouthLong\n");
+            //socket.emit('send', "mouthLong\n");
         } else if (currentQuestion == 5) {
             setTimeout(playCourage, 1330);
-            socket.emit('send', "mouthLong\n");
+            //socket.emit('send', "mouthLong\n");
         } else if (currentQuestion == 8) {
             setTimeout(playWhere, 1330);
-            socket.emit('send', "mouthLong\n");
+            //socket.emit('send', "mouthLong\n");
         }
         populateQuestion(currentQuestion)
     } else {
@@ -450,7 +365,7 @@ function showAnswer(S) {
     var house = S.house
     // add logic to play specific noise according to house
     setTimeout(playHouseAudio, 1100, house);
-    socket.emit('send', "mouthShort\n");
+    //socket.emit('send', "mouthShort\n");
     
     const answerBlock = document.createElement('div')
     answerBlock.classList.add('result-block')

@@ -78,42 +78,46 @@ function analyzeSession(S, chosenAnswers) {
     };
 };
 
+var myChart = null;
 
 // Function to create a pie chart based on the personality test results
-function createChart(sessionData) {
-    // create the chart
-    var chart = document.getElementById("myChart");
-    var myChart = new Chart(chart, {
-        type: 'pie',
-        data: {
-            labels: ['Gryffindor', 'Hufflepuff', 'Ravenclaw', 'Slytherin'],
-            datasets: [{
-                label: 'House Percentage',
-                data: [sessionData.GRY/sessionData.totalPoints, 
-                    sessionData.HUF/sessionData.totalPoints, 
-                    sessionData.RAV/sessionData.totalPoints, 
-                    sessionData.SLY/sessionData.totalPoints
-                ],
-                backgroundColor: [
-                    '#cd373c',
-                    '#FFD800',
-                    '#0E1A40',
-                    '#1A472A'
-                ],
-                borderColor: [
-                    '#cd373c',
-                    '#FFD800',
-                    '#0E1A40',
-                    '#1A472A'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-        }
-    });
-
+function createChart(sessionData, chart) {
+    if (myChart != null){
+        myChart.destroy();
+    } else {
+        // create the chart
+        var chart = document.getElementById("myChart");
+        var myChart = new Chart(chart, {
+            type: 'pie',
+            data: {
+                labels: ['Gryffindor', 'Hufflepuff', 'Ravenclaw', 'Slytherin'],
+                datasets: [{
+                    label: 'House Percentage',
+                    data: [sessionData.GRY/sessionData.totalPoints, 
+                        sessionData.HUF/sessionData.totalPoints, 
+                        sessionData.RAV/sessionData.totalPoints, 
+                        sessionData.SLY/sessionData.totalPoints
+                    ],
+                    backgroundColor: [
+                        '#cd373c',
+                        '#FFD800',
+                        '#0E1A40',
+                        '#1A472A'
+                    ],
+                    borderColor: [
+                        '#cd373c',
+                        '#FFD800',
+                        '#0E1A40',
+                        '#1A472A'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+            }
+        });
+    }
     myChart.update();
 };
