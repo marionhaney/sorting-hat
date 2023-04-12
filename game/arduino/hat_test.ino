@@ -1,4 +1,5 @@
 // Include the Servo library 
+// Jocelyn Su, 2023 Booth Game
 #include <Servo.h> 
 // Declare the Servo pin 
 int servoPin2 = 2; 

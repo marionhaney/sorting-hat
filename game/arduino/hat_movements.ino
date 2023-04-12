@@ -1,4 +1,5 @@
 // 24301
+// Marion Haney, 2023 Booth Game
 // Include the Servo library 
 #include <Servo.h> 
 // Declare the Servo pin 
