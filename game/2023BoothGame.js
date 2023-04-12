@@ -111,10 +111,10 @@ const questions = [
 ]
 
 const results = [
-    { house: "Gryffindor", code: "GRY", image: "graphics/gryff.png", desc: "Gryffindor is known for its bravery, courage, and determination. To embody these traits, we can look to the famous alumni of Carnegie Mellon University who have shown similar characteristics. One such example is Ted Danson, an accomplished actor known for his roles in popular TV shows like Cheers and The Good Place. Danson's dedication to his craft and willingness to take on challenging roles exemplifies the bravery and determination that Gryffindors are known for. \n Press '0' to sort again!" },
-    { house: "Hufflepuff", code: "HUF", image: "graphics/huff.jpg", desc: "Hufflepuff is known for its loyalty, hard work, and kindness. To embody these traits, we can look to the famous alumni of Carnegie Mellon University who have shown similar characteristics. One such example is Randy Pausch, a computer science professor known for his inspiring 'Last Lecture' that went viral on the internet. Pausch's dedication to teaching and his positive attitude towards life exemplify the loyalty, hard work, and kindness that Hufflepuffs are known for. \n Press '0' to sort again!" },
-    { house: "Ravenclaw", code: "RAV", image: "graphics/raven.jpg", desc: "Ravenclaw is known for its wit, wisdom, and intelligence. To embody these traits, we can look to the famous alumni of Carnegie Mellon University, a prestigious institution known for producing top-notch scholars and innovators. One such example is Andrew Moore, who served as the Dean of the School of Computer Science at Carnegie Mellon and later worked for Google as the Vice President of Engineering. His expertise in machine learning and computer vision exemplifies the intellectual curiosity and analytical prowess that Ravenclaws are known for. \n Press '0' to sort again!" },
-    { house: "Slytherin", code: "SLY", image: "graphics/slyth.jpg", desc: "Slytherin is known for its cunning, ambition, and resourcefulness. To embody these traits, we can look to the famous alumni of Carnegie Mellon University who have shown similar characteristics. One such example is Alan Newell, a computer science pioneer who co-founded the Artificial Intelligence Center at Carnegie Mellon. Newell's innovative and strategic thinking in the field of computer science exemplifies the cunning and resourcefulness that Slytherins are known for. \n Press '0' to sort again!" }
+    { house: "Gryffindor", code: "GRY", image: "graphics/gryff.png", desc: "Gryffindor is known for its bravery, courage, and determination. To embody these traits, we can look to the famous alumni of Carnegie Mellon University who have shown similar characteristics. One such example is Ted Danson, an accomplished actor known for his roles in popular TV shows like Cheers and The Good Place. Danson's dedication to his craft and willingness to take on challenging roles exemplifies the bravery and determination that Gryffindors are known for. \n"},
+    { house: "Hufflepuff", code: "HUF", image: "graphics/huff.jpg", desc: "Hufflepuff is known for its loyalty, hard work, and kindness. To embody these traits, we can look to the famous alumni of Carnegie Mellon University who have shown similar characteristics. One such example is Randy Pausch, a computer science professor known for his inspiring 'Last Lecture' that went viral on the internet. Pausch's dedication to teaching and his positive attitude towards life exemplify the loyalty, hard work, and kindness that Hufflepuffs are known for. \n" },
+    { house: "Ravenclaw", code: "RAV", image: "graphics/raven.jpg", desc: "Ravenclaw is known for its wit, wisdom, and intelligence. To embody these traits, we can look to the famous alumni of Carnegie Mellon University, a prestigious institution known for producing top-notch scholars and innovators. One such example is Andrew Moore, who served as the Dean of the School of Computer Science at Carnegie Mellon and later worked for Google as the Vice President of Engineering. His expertise in machine learning and computer vision exemplifies the intellectual curiosity and analytical prowess that Ravenclaws are known for. \n" },
+    { house: "Slytherin", code: "SLY", image: "graphics/slyth.jpg", desc: "Slytherin is known for its cunning, ambition, and resourcefulness. To embody these traits, we can look to the famous alumni of Carnegie Mellon University who have shown similar characteristics. One such example is Alan Newell, a computer science pioneer who co-founded the Artificial Intelligence Center at Carnegie Mellon. Newell's innovative and strategic thinking in the field of computer science exemplifies the cunning and resourcefulness that Slytherins are known for. \n" }
 ]
 
 const titleAudio = new Audio('audio/comeForth.mp3');
@@ -377,7 +377,7 @@ function showAnswer(S) {
     // add logic to play specific noise according to house
     setTimeout(playHouseAudio, 1100, house);
     //socket.emit('send', "mouthShort\n");
-    
+    reset.textContent = "Press '0' to restart."
     const answerBlock = document.createElement('div')
     answerBlock.classList.add('result-block')
     
@@ -395,7 +395,7 @@ function showAnswer(S) {
     const welcome = '\nWelcome to ' + result.house + userName + '!'
     answerDesc.textContent = result.desc + welcome
     
-    answerBlock.append(answerTitle, answerDesc)
+    answerBlock.append(answerTitle, answerDesc, reset)
     answerDisplay.append(session, answerBlock)
 }
 
