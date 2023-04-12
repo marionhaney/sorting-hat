@@ -13,6 +13,9 @@ socket.on('button_press', function(data) {
     buttonShowNextQuestion(strData);
 });
 
+var firstSession = true;
+var myChart = null;
+
 
 const questions = [
     {
@@ -199,9 +202,9 @@ function resetGlobals() {
     question = questions[currentQuestion]
     buttonPresses.presses = []
     buttonPresses.numPresses = 0
-    // clear chart
-    canvas = document.getElementById("myChart");
-    canvas.remove();
+    firstSession = false
+    var canvas = document.getElementsByTagName("canvas")[0]
+    canvas.style.display = "none";
 }
 
 function resetQuiz() {
@@ -355,8 +358,14 @@ function processAnswer(questionId, answerId) {
     } else {
         var S = new SessionData(sessionID, userName);
         analyzeSession(S, chosenAnswers);
-        showAnswer(S)
-        createChart(S);
+        showAnswer(S);
+        var canvas = document.getElementsByTagName("canvas")[0]
+        canvas.style.display = "block";
+        if (firstSession && myChart == null) {
+            createChart(S);
+        } else {
+            updateChart(myChart, S);
+        }
     }
 }
 

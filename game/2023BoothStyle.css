@@ -41,6 +41,7 @@ canvas {
     width: 10px;
     height: 10px;
     color: white;
+    display: hidden;
 }
 
 img {

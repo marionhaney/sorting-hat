@@ -12,6 +12,7 @@ const { SerialPort } = require('serialport');
 const { ReadlineParser} = require('@serialport/parser-readline');
 
 
+/** 
 // port for the buttons
 const portButtons = new SerialPort(
     { baudRate: 9600 ,
@@ -40,24 +41,11 @@ portHat.on('data', function(data) {
 
 
 
-
-
-
-app.get('/', (req, res) => {
-     res.sendFile(__dirname + '/game/SortingQuiz.html');
-})
-app.use(express.static(__dirname + '/game'));
-
-
 // set the parser for the buttons input data and connect the socket for sending the hat messages
 io.on('connection', function(socket) {
      console.log('A user connected');
   
      // Whenever someone disconnects this piece of code executed
-     /* TODO: when we refresh the page (restart the game) the button presses double
-     each time. parser.on registers twice, seems like a connection is not closing when we refresh
-     how can we close the connection properly?
-     */
      socket.on('disconnect', function () {
         console.log('A user disconnected');
      });
@@ -80,6 +68,13 @@ io.on('connection', function(socket) {
 
 });
 
+
+*/
+
+app.get('/', (req, res) => {
+     res.sendFile(__dirname + '/game/SortingQuiz.html');
+})
+app.use(express.static(__dirname + '/game'));
 
 
 http.listen(8080, () => {
