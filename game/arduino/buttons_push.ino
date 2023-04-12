@@ -1,4 +1,3 @@
-// you can ignore all the files other than this one
 // 24401
 
 #define DELAY 300

@@ -348,13 +348,13 @@ function processAnswer(questionId, answerId) {
         if (currentQuestion == 2) {
             stopAudio(titleAudio);
             setTimeout(playDifficult, 1330);
-            //socket.emit('send', "mouthLong\n");
+            socket.emit('send', "mouthLong\n");
         } else if (currentQuestion == 5) {
             setTimeout(playCourage, 1330);
-            //socket.emit('send', "mouthLong\n");
+            socket.emit('send', "mouthLong\n");
         } else if (currentQuestion == 8) {
             setTimeout(playWhere, 1330);
-            //socket.emit('send', "mouthLong\n");
+            socket.emit('send', "mouthLong\n");
         }
         populateQuestion(currentQuestion)
     } else {
@@ -376,7 +376,7 @@ function showAnswer(S) {
     var house = S.house
     // add logic to play specific noise according to house
     setTimeout(playHouseAudio, 1100, house);
-    //socket.emit('send', "mouthShort\n");
+    socket.emit('send', "mouthShort\n");
     reset.textContent = "Press '0' to restart."
     const answerBlock = document.createElement('div')
     answerBlock.classList.add('result-block')
@@ -413,6 +413,7 @@ function playHouseAudio(house) {
 
 
 function playTitleAudio() {
+    socket.emit('send', "eyebrows\n");
     titleAudio.play();
 };
 

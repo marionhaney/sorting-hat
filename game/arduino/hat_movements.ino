@@ -36,16 +36,18 @@ void getMsg() {
 void moveEyebrows() {
   int pos = 20;
   int n = 0;
-  int del = 1000;
-  for (n = 0; n <= 4; n += 1) {
-    for (pos = 20; pos <= 75; pos += 1) {
+  int del = 200;
+  for (n = 0; n <= 2; n += 1) {
+    for (pos = 20; pos <= 60; pos += 1) {
       brows1.write(pos);
       brows2.write(pos);
       delay(15);
     }
     delay(del);
-    del += 300;
+    del += 100;
   }
+  brows1.write(60);
+  brows2.write(60);
 }
 
 // Function for mouth short
@@ -55,7 +57,7 @@ void moveMouthShort() {
   delay(250);
   mouth1.write(40);
   mouth2.write(40);
-  delay(1000);
+  delay(250);
 
   mouth1.write(5);
   mouth2.write(5);
@@ -69,7 +71,7 @@ void moveMouthShort() {
 // Function for mouth long
 void moveMouthLong() {
   int n = 0;
-  for (n = 0; n <= 4; n += 1){
+  for (n = 0; n <= 2; n += 1){
     moveMouthShort();
   }
 }
@@ -104,4 +106,3 @@ void loop(){
   }
 
 }
-  
