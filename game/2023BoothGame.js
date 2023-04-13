@@ -137,7 +137,7 @@ const numHouses = 4
 const numQuestions = 10
 const enter = '13'
 const space = '32'
-const restart = '48'
+const restart = '32'
 const countString = "/".concat(numQuestions.toString())
 const titleImage = "graphics/TITLE.jpg"
 const startImage = document.createElement('img')
@@ -377,7 +377,7 @@ function showAnswer(S) {
     // add logic to play specific noise according to house
     setTimeout(playHouseAudio, 1230, house);
     socket.emit('send', "mouthShort\n");
-    reset.textContent = "Press '0' to restart."
+    reset.textContent = "Press 'SPACE' to restart."
     const answerBlock = document.createElement('div')
     answerBlock.classList.add('result-block')
     
