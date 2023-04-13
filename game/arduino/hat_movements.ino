@@ -73,8 +73,59 @@ void moveMouthShort() {
 void moveMouthLong() {
   int n = 0;
   for (n = 0; n <= 2; n += 1){
-    moveMouthShort();
+    mouth1.write(0);
+    mouth2.write(0);
+    brows1.write(5);
+    brows2.write(5);
+    delay(250);
+    mouth1.write(60);
+    mouth2.write(60);
+    brows1.write(40);
+    brows2.write(40);
+    delay(250);
+
+    mouth1.write(0);
+    mouth2.write(0);
+    brows1.write(5);
+    brows2.write(5);
+    delay(250);
+    mouth1.write(80);
+    mouth2.write(80);
+    brows1.write(40);
+    brows2.write(40);
+    delay(250);
   }
+}
+
+
+
+////// RUN THE MOVEMENTS //////
+void setup() { 
+  // We need to attach the servo to the used pin number 
+  mouth1.attach(servoPin2); 
+  mouth2.attach(servoPin3); 
+  brows1.attach(servoPin4); 
+  brows2.attach(servoPin5); 
+
+  // Start the serial
+  Serial.begin(9600);
+}
+
+void loop(){ 
+  getMsg();
+  if (hatMsg == "eyebrows\n"){
+    Serial.println("Starting movements!"); 
+    moveEyebrows();
+  } else if (hatMsg == "mouthLong\n") {
+    Serial.println("Starting movements!");
+    moveMouthLong();
+  } else if (hatMsg == "mouthShort\n") {
+    Serial.println("Starting movements!");
+    moveMouthShort();
+  } else {
+    // do nothing
+  }
+
 }
 
 

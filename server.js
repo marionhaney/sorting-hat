@@ -13,7 +13,7 @@ const { SerialPort } = require('serialport');
 const { ReadlineParser} = require('@serialport/parser-readline');
 
 
-
+/** 
 // port for the buttons
 const portButtons = new SerialPort(
     { baudRate: 9600 ,
@@ -68,7 +68,7 @@ io.on('connection', function(socket) {
      
 
 });
-
+*/
 
 
 app.get('/', (req, res) => {
