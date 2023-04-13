@@ -375,7 +375,7 @@ function showAnswer(S) {
     finished = true
     var house = S.house
     // add logic to play specific noise according to house
-    setTimeout(playHouseAudio, 1100, house);
+    setTimeout(playHouseAudio, 1230, house);
     socket.emit('send', "mouthShort\n");
     reset.textContent = "Press '0' to restart."
     const answerBlock = document.createElement('div')
