@@ -1,5 +1,4 @@
 // 24301
-// Marion Haney, 2023 Booth Game
 // Include the Servo library 
 #include <Servo.h> 
 // Declare the Servo pin 
@@ -66,7 +65,9 @@ void moveMouthShort() {
   mouth1.write(80);
   mouth2.write(80);
   delay(250);
-
+  mouth1.write(0);
+  mouth2.write(0);
+  delay(100);
 }
 
 // Function for mouth long
@@ -94,38 +95,11 @@ void moveMouthLong() {
     brows1.write(40);
     brows2.write(40);
     delay(250);
+
+    mouth1.write(0);
+    mouth2.write(0);
+    delay(100);
   }
-}
-
-
-
-////// RUN THE MOVEMENTS //////
-void setup() { 
-  // We need to attach the servo to the used pin number 
-  mouth1.attach(servoPin2); 
-  mouth2.attach(servoPin3); 
-  brows1.attach(servoPin4); 
-  brows2.attach(servoPin5); 
-
-  // Start the serial
-  Serial.begin(9600);
-}
-
-void loop(){ 
-  getMsg();
-  if (hatMsg == "eyebrows\n"){
-    Serial.println("Starting movements!"); 
-    moveEyebrows();
-  } else if (hatMsg == "mouthLong\n") {
-    Serial.println("Starting movements!");
-    moveMouthLong();
-  } else if (hatMsg == "mouthShort\n") {
-    Serial.println("Starting movements!");
-    moveMouthShort();
-  } else {
-    // do nothing
-  }
-
 }
 
 
