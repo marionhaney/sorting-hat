@@ -13,7 +13,6 @@ const { SerialPort } = require('serialport');
 const { ReadlineParser} = require('@serialport/parser-readline');
 
 
-/** 
 // port for the buttons
 const portButtons = new SerialPort(
     { baudRate: 9600 ,
@@ -23,7 +22,6 @@ const parserButtons = portButtons.pipe(new ReadlineParser({ delimiter: '\n' }));
 portButtons.on("open", () => {
      console.log('serial port for the buttons open');
 });
-
 
 
 // port for the hat
@@ -60,6 +58,7 @@ io.on('connection', function(socket) {
           
      });
 
+
      
      socket.on('send', function(data) {
           console.log("Sending message to hat ", data);
@@ -68,7 +67,6 @@ io.on('connection', function(socket) {
      
 
 });
-*/
 
 
 app.get('/', (req, res) => {
