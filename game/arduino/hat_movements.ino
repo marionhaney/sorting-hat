@@ -53,18 +53,18 @@ void moveEyebrows() {
 
 // Function for mouth short
 void moveMouthShort() {
-  mouth1.write(5);
-  mouth2.write(5);
+  mouth1.write(0);
+  mouth2.write(0);
   delay(250);
-  mouth1.write(40);
-  mouth2.write(40);
+  mouth1.write(60);
+  mouth2.write(60);
   delay(250);
 
-  mouth1.write(5);
-  mouth2.write(5);
+  mouth1.write(0);
+  mouth2.write(0);
   delay(250);
-  mouth1.write(40);
-  mouth2.write(40);
+  mouth1.write(80);
+  mouth2.write(80);
   delay(250);
 
 }
