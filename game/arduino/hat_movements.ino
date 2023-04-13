@@ -65,8 +65,8 @@ void moveMouthShort() {
   mouth1.write(80);
   mouth2.write(80);
   delay(250);
-  mouth1.write(0);
-  mouth2.write(0);
+  mouth1.write(45);
+  mouth2.write(45);
   delay(100);
 }
 
@@ -96,8 +96,8 @@ void moveMouthLong() {
     brows2.write(40);
     delay(250);
 
-    mouth1.write(0);
-    mouth2.write(0);
+    mouth1.write(45);
+    mouth2.write(45);
     delay(100);
   }
 }
